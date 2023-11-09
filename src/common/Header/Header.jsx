@@ -21,14 +21,13 @@ export const Header = () => {
                 title={"Register"}
             />
             <LinkButton
-                path={"/workers"}
-                title={"Workers"}
+                path={"/artists"}
+                title={"artists"}
             />
             <LinkButton
                 path={"/services"}
                 title={"Services"}
             />
-            
          </div>
      )
 }
