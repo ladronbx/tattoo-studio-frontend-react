@@ -4,7 +4,7 @@ import { Home } from '../Home/Home';
 import { Login } from '../Login/Login';
 import { Register } from '../Register/Register';
 import { Profile } from '../Profile/Profile';
-import { GetTattoos } from '../GetTattoos/GetTattoos';
+import { GetServices } from '../GetServices/GetServices';
 
 export const Body = () => {
      return (
@@ -15,7 +15,7 @@ export const Body = () => {
                 <Route path="/register" element={<Register />}/>
                 <Route path="/profile" element={<Profile />}/>
                 <Route path="/workers" element={<GetWorkers />}/>
-                <Route path="/tattoos" element={<GetTattoos />}/>
+                <Route path="/services" element={<GetServices />}/>
             </Routes>
          </>
      )
