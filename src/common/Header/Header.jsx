@@ -20,6 +20,7 @@ export const Header = () => {
                 path={"/register"}
                 title={"Register"}
             />
+            
          </div>
      )
 }
