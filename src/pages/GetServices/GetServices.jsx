@@ -4,6 +4,6 @@ import "./GetServices.css"
 export const GetServices = () => {
 
     return (
-        <div>Soy el GetServices</div>
+        <div className="servicesStyle">Soy el GetServices</div>
     )
 }

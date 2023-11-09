@@ -4,6 +4,6 @@ import "./Login.css"
 export const Login = () => {
 
     return (
-        <div>Soy el Login</div>
+        <div className="loginStyle">Soy el Login</div>
     )
 }

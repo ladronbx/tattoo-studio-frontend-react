@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from "react"
-import "./GetWorker.css"
+import "./GetArtists.css"
 
-export const GetWorker = () => {
+export const GetArtists = () => {
 
     return (
-        <div>Soy el GetWorker</div>
+        <div className="artistsStyle">Soy el GetArtists</div>
     )
 }

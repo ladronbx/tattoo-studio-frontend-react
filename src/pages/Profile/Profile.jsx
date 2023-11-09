@@ -4,6 +4,6 @@ import "./Profile.css"
 export const Profile = () => {
 
     return (
-        <div>Soy el Profile</div>
+        <div className="profileStyle">Soy el Profile</div>
     )
 }

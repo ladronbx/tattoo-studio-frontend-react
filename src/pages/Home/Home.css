@@ -1,0 +1,14 @@
+body{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(204, 140, 22);
+    width: 100vw
+}
+
+.homeStyle{
+    height: 84vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

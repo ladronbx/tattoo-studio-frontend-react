@@ -9,7 +9,7 @@ export const Header = () => {
      return (
          <div className='headerStyle'>
             <LinkButton
-                path={"/"}
+                path={"/home"}
                 title={"Home"}
             />
             <LinkButton
@@ -19,6 +19,10 @@ export const Header = () => {
             <LinkButton
                 path={"/register"}
                 title={"Register"}
+            />
+            <LinkButton
+                path={"/profile"}
+                title={"Profile"}
             />
             <LinkButton
                 path={"/artists"}
