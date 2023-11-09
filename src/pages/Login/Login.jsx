@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from "react"
-import "./Login.css"
-import { CustomInputs } from "../../common/CustomInputs/CustomInputs"
+import React, { useState, useEffect } from "react";
+import "./Login.css";
+import { CustomInputs } from "../../common/CustomInputs/CustomInputs";
+import { useNavigate } from 'react-router-dom';
+import { connection } from "../../services/apiCalls";
 
 
 export const Login = () => {
+
+    const navigate = useNavigate();
 
     const [credentials, setCredentials] = useState({
         email: "",
@@ -16,6 +20,21 @@ export const Login = () => {
             ...prevState,
             [e.target.name]: e.target.value
         }));
+    };
+
+    useEffect(() => {
+        console.log(credentials);
+    }, [credentials]);
+
+    const logMe = () => {
+        connection(credentials)
+            .then((response) => {
+                console.log(response.data);
+                navigate("/profile");
+            })
+            .catch(error => {
+                console.log(error);
+            });
     };
 
     return (
@@ -34,6 +53,9 @@ export const Login = () => {
                 placeholder={"Password1!"}
                 functionProp={functionHandler}
             />
+
+            <div className='buttonLogin' onClick={logMe}>Log Me!</div>
+
         </div>
 
     )
