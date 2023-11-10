@@ -12,3 +12,11 @@ body{
     justify-content: center;
     align-items: center;
 }
+
+.tokenStyle{
+    color: red;
+}
+
+.loginStyle{
+    background-color: black;
+}

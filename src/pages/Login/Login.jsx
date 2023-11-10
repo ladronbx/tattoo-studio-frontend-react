@@ -1,20 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "./Login.css";
 import { CustomInputs } from "../../common/CustomInputs/CustomInputs";
-import { useNavigate } from 'react-router-dom';
 import { connection } from "../../services/apiCalls";
 
-
 export const Login = () => {
-
-    const navigate = useNavigate();
 
     const [credentials, setCredentials] = useState({
         email: "",
         password: ""
-    })
+    });
+    const [token, setToken] = useState(""); 
 
-    // Argumento de entrada que es un evento.  
     const functionHandler = (e) => {
         setCredentials((prevState) => ({
             ...prevState,
@@ -22,15 +18,14 @@ export const Login = () => {
         }));
     };
 
-    useEffect(() => {
-        console.log(credentials);
-    }, [credentials]);
-
     const logMe = () => {
         connection(credentials)
             .then((response) => {
                 console.log(response.data);
-                navigate("/profile");
+                const { token } = response.data;
+                
+                // esto es lo mismo que const token = response.data.token 
+                setToken(token);
             })
             .catch(error => {
                 console.log(error);
@@ -56,7 +51,8 @@ export const Login = () => {
 
             <div className='buttonLogin' onClick={logMe}>Log Me!</div>
 
-        </div>
+            <div className="tokenStyle">{token}</div>
 
+        </div>
     )
 }
