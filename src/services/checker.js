@@ -21,6 +21,7 @@ export const validator = (type, value) => {
 
         case `name`:
         case `surname`:
+        case `full_name`:
 
             if (!value) {
                 return `You must insert a ${type}`
