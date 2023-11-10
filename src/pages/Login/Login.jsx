@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Login.css";
-import { CustomInputs } from "../../common/CustomInputs/CustomInputs";
-import { connection } from "../../services/apiCalls";
+import { CustomInput } from "../../common/CustomInput/CustomInput";
+import { login } from "../../services/apiCalls";
 
 export const Login = () => {
 
@@ -9,6 +9,8 @@ export const Login = () => {
         email: "",
         password: ""
     });
+
+
     const [token, setToken] = useState(""); 
 
     const functionHandler = (e) => {
@@ -19,12 +21,11 @@ export const Login = () => {
     };
 
     const logMe = () => {
-        connection(credentials)
+        login(credentials)
             .then((response) => {
                 console.log(response.data);
                 const { token } = response.data;
-                
-                // esto es lo mismo que const token = response.data.token 
+                //const token = response.data.token 
                 setToken(token);
             })
             .catch(error => {
@@ -34,14 +35,14 @@ export const Login = () => {
 
     return (
         <div className="loginStyle">
-            <CustomInputs
+            <CustomInput
                 design={"inputStyle"}
                 type={"email"}
                 name={"email"}
                 placeholder={"user@gmail.com"}
                 functionProp={functionHandler}
             />
-            <CustomInputs
+            <CustomInput
                 design={"inputStyle"}
                 type={"password"}
                 name={"password"}

@@ -1,7 +1,7 @@
 import React from 'react'
-import './CustomInputs.css'
+import './CustomInput.css'
 
-export const CustomInputs = ({inputStyle, type, name, placeholder, functionProp}) => {
+export const CustomInput = ({inputStyle, type, name, placeholder, functionProp}) => {
      return (
          <input 
             className={inputStyle}
