@@ -1,9 +1,14 @@
-.headerStyle{
+.header-style{
     display: flex;
-    margin: 0;
+    margin: 1em;
     justify-content: center;
     align-items: center;
     height: 16vh;
     width: 100vw;
     padding: 0.5em;
+    background-color: rgb(9, 9, 37);
+}
+
+.link-button-style{
+    padding: 2em;
 }

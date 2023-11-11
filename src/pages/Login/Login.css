@@ -1,51 +1,38 @@
-.login-style{
-    height: 84vh;
-    width: 100vw;
-    background-color: #000000;
+/* Login.css */
+
+.login-style {
     display: flex;
-    justify-content: center;
     flex-direction: column;
-}
-
-.button-submit {
-    width: 200px;
-    height: 40px;
-    border: 2px solid #2c3e50;
-    background-color: #425058;
-    color: white;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.button-submit:hover {
-    background-color: #2980b9;
-}
-
-.button-submit:active {
-    transform: scale(0.95);
-}
-
-.input-card {
-    background-color: white;
-    margin: 20px;
-    padding: 20px;
-    border: 2px solid #2c3e50;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
     align-items: center;
-    flex-direction: column;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.error-style {
-    color: #e74c3c;
-    margin-top: 10px;
-    font-size: 14px;
-    font-style: italic;
-}
+    padding: 2em;
+  }
+  
+  .inputStyle {
+    width: 100%;
+    padding: 0.5em;
+    margin: 0.5em 0;
+    border: 1px solid #ddd;
+    border-radius: 1em;
+    font-size: 1em;
+  }
+  
+  .error-style {
+    color: red;
+    margin-bottom: 1em;
+  }
+  
+  .buttonLogin {
+    background-color: #3498db;
+    color: #fff;
+    padding: 1em 2em;
+    border: none;
+    border-radius: 0.3em;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+  }
+  
+  .buttonLogin:hover {
+    background-color: #2980b9;
+  }
+  

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import "./Profile.css";
 import { getProfile } from "../../services/apiCalls"
 import { useNavigate } from 'react-router-dom'
-import { CardUser } from "../../common/CardUSer/CardUser"
+import { LinkButton } from '../../common/LinkButton/LinkButton'
 
 export const Profile = () => {
     const [user, setUser] = useState({
@@ -39,7 +39,18 @@ export const Profile = () => {
                     ? (
                         <div className="card-user">
                             <img src={user.photo} alt="User" />
-                            <h1>Welcome, {user.full_name}!</h1>
+                            <h2>{user.full_name}</h2>
+                            <h3>Email</h3>
+                            <h4>{user.email}</h4>
+                            <h3>Phone number</h3>
+                            <h4>{user.phone_number}</h4>
+                            <div>
+                                <LinkButton
+                                    classButton="button-update"
+                                    path={"/update"}
+                                    title={"Update my profile"}
+                                />
+                            </div>
                         </div>
                     )
                     : (

@@ -6,6 +6,7 @@ import { Register } from '../Register/Register';
 import { Profile } from '../Profile/Profile';
 import { GetServices } from '../GetServices/GetServices';
 import { GetArtists } from '../GetArtists/GetArtists';
+import { UpdateProfile } from '../UpdateProfile/UpdateProfile';
 
 export const Body = () => {
      return (
@@ -17,6 +18,7 @@ export const Body = () => {
                 <Route path="/profile" element={<Profile />}/>
                 <Route path="/artists" element={<GetArtists />}/>
                 <Route path="/services" element={<GetServices />}/>
+                <Route path="/update" element={<UpdateProfile />}/>
             </Routes>
          </>
      )

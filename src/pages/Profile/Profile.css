@@ -6,6 +6,7 @@
   }
   
   .card-user {
+    color: black;
     text-align: center;
     padding: 1.25em;
     border-radius: 0.5em;
@@ -28,3 +29,7 @@
     margin-bottom: 0.625em;
   }
   
+
+.button-update{
+  color: red;
+}
