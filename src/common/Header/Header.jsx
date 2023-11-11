@@ -41,6 +41,11 @@ export const Header = () => {
                 path={"/update"}
                 title={"UpdateProfile"}
             />
+            <LinkButton
+                classButton={"link-button-style"}
+                path={"/appointments"}
+                title={"Appointments"}
+            />
         </div>
     )
 }

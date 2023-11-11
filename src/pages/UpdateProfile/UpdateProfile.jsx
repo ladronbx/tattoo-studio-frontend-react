@@ -42,8 +42,6 @@ export const UpdateProfile = () => {
     }));
   };
 
-  const photoDefault = (photo) => (photo === "" ? undefined : photo);
-
   const Update = () => {
     if (
       credentials.full_name !== "" &&
@@ -72,8 +70,6 @@ export const UpdateProfile = () => {
         });
     }
   };
-
-
 
   return (
     <div className="register-body">
