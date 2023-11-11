@@ -64,7 +64,6 @@ export const Register = () => {
           console.log(response.data);
           const { message, error } = response.data;
           setMessage(message);
-
           if (!error) {
             setTimeout(() => {
               navigate("/login");
