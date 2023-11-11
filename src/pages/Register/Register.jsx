@@ -12,14 +12,16 @@ export const Register = () => {
     full_name: "",
     email: "",
     password: "",
-    phone_number: ""
+    phone_number: "",
+    photo: ""
   });
-  
+
   const [credentialsError, setCredentialsError] = useState({
     full_nameError: "",
     emailError: "",
     passwordError: "",
-    phone_numberError: ""
+    phone_numberError: "",
+    photoError: ""
   })
 
   const [message, setMessage] = useState("");
@@ -41,6 +43,8 @@ export const Register = () => {
     }));
   };
 
+  const photoDefault = (photo) => (photo === "" ? undefined : photo);
+  
   const SignUp = () => {
     if (
       credentials.full_name !== "" &&
@@ -50,9 +54,10 @@ export const Register = () => {
     ) {
       const credentialsWithNumber = {
         ...credentials,
-        phone_number: parseInt(credentials.phone_number, 10)
+        phone_number: parseInt(credentials.phone_number, 10),
+        photo: photoDefault(credentials.photo)
       };
-
+  
       registerUser(credentialsWithNumber)
         .then((response) => {
           console.log(response.data);
@@ -67,54 +72,65 @@ export const Register = () => {
         });
     }
   };
+  
 
   return (
     <div className="register-body">
-    <div className="input-card">
+      <div className="input-card">
         <CustomInput
-            design={"inputStyle"}
-            type={"name"}
-            name={"full_name"}
-            placeholder={"name"}
-            functionProp={functionHandler}
-            functionBlur={errorCheck}
+          design={"inputStyle"}
+          type={"name"}
+          name={"full_name"}
+          placeholder={"name"}
+          functionProp={functionHandler}
+          functionBlur={errorCheck}
         />
         <div className='error-style'>{credentialsError.full_nameError}</div>
 
         <CustomInput
-            design={"inputStyle"}
-            type={"email"}
-            name={"email"}
-            placeholder={"email"}
-            functionProp={functionHandler}
-            functionBlur={errorCheck}
+          design={"inputStyle"}
+          type={"email"}
+          name={"email"}
+          placeholder={"email"}
+          functionProp={functionHandler}
+          functionBlur={errorCheck}
         />
         <div className='error-style'>{credentialsError.emailError}</div>
 
         <CustomInput
-            design={"inputStyle"}
-            type={"password"}
-            name={"password"}
-            placeholder={"password"}
-            functionProp={functionHandler}
-            functionBlur={errorCheck}
+          design={"inputStyle"}
+          type={"password"}
+          name={"password"}
+          placeholder={"password"}
+          functionProp={functionHandler}
+          functionBlur={errorCheck}
         />
         <div className='error-style'>{credentialsError.passwordError}</div>
 
         <CustomInput
-            design={"inputStyle"}
-            type={"number"}
-            name={"phone_number"}
-            placeholder={"phone number"}
-            functionProp={functionHandler}
-            functionBlur={errorCheck}
+          design={"inputStyle"}
+          type={"number"}
+          name={"phone_number"}
+          placeholder={"phone number"}
+          functionProp={functionHandler}
+          functionBlur={errorCheck}
         />
         <div className='error-style'>{credentialsError.phone_numberError}</div>
 
+        <CustomInput
+          design={"inputDesign"}
+          type={"text"}
+          name={"photo"}
+          placeholder={"URL photo"}
+          functionProp={functionHandler}
+          functionBlur={errorCheck}
+        />
+        <div className='error-style'>{credentialsError.photoError}</div>
+
         <div className='button-submit' onClick={SignUp}>Sign up</div>
         <p>{message}</p>
+      </div>
     </div>
-</div>
 
   );
 };

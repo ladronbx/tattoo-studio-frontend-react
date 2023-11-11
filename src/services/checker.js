@@ -1,5 +1,5 @@
 
-export const validator = (type, value) => {
+export const checker = (type, value) => {
 
     switch (type) {
 
@@ -28,7 +28,7 @@ export const validator = (type, value) => {
             } else if (typeof (value) !== `string`) {
                 return `Incorrect ${type}, it should only contain strings`
             } else if (value.length > 50) {
-                return `${type} is too long, max 50 characters`
+                return `${type} is too long,git  max 50 characters`
             } else {
                 return ``
             }
@@ -62,5 +62,17 @@ export const validator = (type, value) => {
             } else {
                 return ``;
             }
+
+
+        case `photo`:
+
+        if (typeof (value) !== `string`) {
+            return `Incorrect ${type}, it should only contain strings`
+        } else if (value.length > 200) {
+            return `${type} is too long, max 200 characters`
+        } else {
+            return ``
+        }
+
     }
 }
