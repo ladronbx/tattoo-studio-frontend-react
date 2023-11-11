@@ -64,7 +64,9 @@ export const Register = () => {
           console.log(response.data);
           const { message, error } = response.data;
           setMessage(message);
+
           if (!error) {
+            // Si no hay error, redirigir a la vista de login después de 2 segundos
             setTimeout(() => {
               navigate("/login");
             }, 2000);
