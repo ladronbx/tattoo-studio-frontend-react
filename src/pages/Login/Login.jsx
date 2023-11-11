@@ -3,8 +3,10 @@ import "./Login.css";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { login } from "../../services/apiCalls";
 import { checker } from "../../services/checker";
+import { useNavigate } from 'react-router-dom';
 
 export const Login = () => {
+    const navigate = useNavigate();
 
     const [credentials, setCredentials] = useState({
         email: "",
@@ -16,7 +18,7 @@ export const Login = () => {
         passwordError: ""
     });
 
-    const [token, setToken] = useState("");
+    // const [token, setToken] = useState("");
 
     const functionHandler = (e) => {
         setCredentials((prevState) => ({
@@ -35,6 +37,8 @@ export const Login = () => {
         }));
     };
 
+    const [message, setMessage] = useState("");
+
     const logMe = () => {
         if (
             credentials.password !== "" &&
@@ -43,10 +47,14 @@ export const Login = () => {
             login(credentials)
                 .then((response) => {
                     console.log(response.data);
-                    const { token } = response.data;
+                    console.log(response.data);
+                    const { message, token } = response.data;
+                    setMessage(message);
                     //const token = response.data.token 
-                    setToken(token);
+                    // setToken(token);
+                    if (message == "Login successful. Token generated.") { navigate("/profile") }
                 })
+
                 .catch(error => {
                     console.log(error);
                 });
@@ -69,13 +77,12 @@ export const Login = () => {
                 type={"password"}
                 name={"password"}
                 placeholder={"Password1!"}
+                functionProp={functionHandler}
                 functionBlur={errorCheck}
             />
             <div className='error-style'>{credentialsError.passwordError}</div>
 
             <div className='buttonLogin' onClick={logMe}>Log Me!</div>
-
-            <div className="tokenStyle">{token}</div>
 
         </div>
     )

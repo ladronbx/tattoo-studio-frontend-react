@@ -7,7 +7,6 @@ import { checker } from "../../services/checker";
 
 export const Register = () => {
   const navigate = useNavigate();
-
   const [credentials, setCredentials] = useState({
     full_name: "",
     email: "",
@@ -44,7 +43,10 @@ export const Register = () => {
   };
 
   const photoDefault = (photo) => (photo === "" ? undefined : photo);
-  
+  // const messageValidation = (message) => (message === ""? :)
+
+
+
   const SignUp = () => {
     if (
       credentials.full_name !== "" &&
@@ -55,24 +57,27 @@ export const Register = () => {
       const credentialsWithNumber = {
         ...credentials,
         phone_number: parseInt(credentials.phone_number, 10),
-        photo: photoDefault(credentials.photo)
+        photo: photoDefault(credentials.photo),
       };
-  
       registerUser(credentialsWithNumber)
         .then((response) => {
           console.log(response.data);
-          const { message } = response.data;
+          const { message, error } = response.data;
           setMessage(message);
-          setTimeout(() => {
-            navigate("/login");
-          }, 2500);
+
+          if (!error) {
+            setTimeout(() => {
+              navigate("/login");
+            }, 2000);
+          }
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     }
   };
-  
+
+
 
   return (
     <div className="register-body">
