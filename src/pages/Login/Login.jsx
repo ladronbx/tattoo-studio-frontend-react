@@ -47,12 +47,15 @@ export const Login = () => {
             login(credentials)
                 .then((response) => {
                     console.log(response.data);
-                    console.log(response.data);
-                    const { message, token } = response.data;
+                    const { message} = response.data;
                     setMessage(message);
-                    //const token = response.data.token 
                     // setToken(token);
-                    if (message == "Login successful. Token generated.") { navigate("/profile") }
+                    if (message == "Login successful. Token generated.") {
+                        //guarado el token en localstorage
+                        localStorage.setItem("token", response.data.token)
+                        console.log(response.data);
+                        navigate("/profile")
+                    }
                 })
 
                 .catch(error => {

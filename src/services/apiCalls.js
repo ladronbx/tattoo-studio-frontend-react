@@ -13,3 +13,11 @@ export const getArtists = async () => {
     return await axios.get(`http://localhost:4000/user/artists`);
 
 }
+
+export const getProfile = (token) => {
+    return axios.get("http://localhost:4000/user/profile", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
