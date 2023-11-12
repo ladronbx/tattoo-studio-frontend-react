@@ -17,16 +17,17 @@ export const Appointments = () => {
                 })
                 .catch(error => console.log(error));
         }
-    }, [appointments]);
-console.log(appointments);
+    }, []);
+    console.log(appointments);
     return (
-        <div className="card-appointments">
+        <div className="card-appointment">
             {
                 appointments
                     ? (
                         <div>
                             {appointments.map(appointment => (
                                 <CardAppointment
+                                    key={appointment.id}
                                     appointmentId={appointment.id}
                                     nameProduct={appointment.name}
                                     imageProduct={appointment.image}

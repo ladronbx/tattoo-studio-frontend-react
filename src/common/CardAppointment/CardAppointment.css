@@ -1,3 +1,18 @@
-.card-appointments{
-    width: 50%;
-}
+.card-appointment {
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 1.25em;
+    border-radius: 0.5em;
+    box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    max-width: 25em;
+    width: 100%;
+  }
+  
+  .card-appointment img {
+    border-radius: 50%;
+    width: 7.5em;
+    height: 7.5em;
+    object-fit: cover;
+    margin-bottom: 1.25em;
+  }
