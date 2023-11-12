@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./CardAppointment.css";
 import { LinkButton } from "../LinkButton/LinkButton";
 
-export const CardAppointment = ({ appointmentId, nameProduct, imageProduct, service, email, artist, date, shift, emit}) => {
+export const CardAppointment = ({ appointmentId, nameProduct, imageProduct, service, email, artist, date, shift, price, emit }) => {
 
     const [collapsed, setCollapsed] = useState(true);
 
@@ -26,6 +26,7 @@ export const CardAppointment = ({ appointmentId, nameProduct, imageProduct, serv
                 <div className="card-appointment-right">
                     <img className="photo" src={imageProduct} alt={nameProduct} />
                     <div className="nameProduct">{nameProduct}</div>
+                    <div className="price">{price}€</div>
                     <div className="email">{email}</div>
                     <div className="tattoo-artist-card-container">
                         <div>Tattoo artist</div>
@@ -37,7 +38,9 @@ export const CardAppointment = ({ appointmentId, nameProduct, imageProduct, serv
                     <LinkButton
                         classButton={"button-update-appointment"}
                         path={"/updateAppointment"}
-                        title={<div className="button-update-appointment" > <img src="https://cdn.icon-icons.com/icons2/1558/PNG/512/353430-checkbox-edit-pen-pencil_107516.png" alt="" /></div>}
+                        title={<div className="button-update-appointment" > <img src="https://cdn.icon-icons.com/icons2/1558/PNG/512/353430-checkbox-edit-pen-pencil_107516.png" alt="" />
+                        </div>}
+                        emit={() => emit()}
                     />
 
                 </div>

@@ -10,7 +10,7 @@ export const Appointments = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    if (token) {
+    if (token && appointments.length === 0) {
       appointmentsUsers(token)
         .then((response) => {
           console.log(appointments);
@@ -20,9 +20,10 @@ export const Appointments = () => {
     }
   }, []);
 
+
   const localIdAppointment = (argumento) => {
-    localStorage.setItem("appoitmentId", argumento)
-  }
+    localStorage.setItem("appointmentId", argumento)
+}
   console.log(appointments);
   return (
     <div className="cards-appointment-body">
@@ -47,6 +48,7 @@ export const Appointments = () => {
                 artist={appointment.full_name}
                 date={appointment.date}
                 shift={appointment.shift}
+                price={appointment.price}
                 emit={() => localIdAppointment(appointment.id)}
               />
 
