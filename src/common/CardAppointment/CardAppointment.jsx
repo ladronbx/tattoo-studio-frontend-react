@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./CardAppointment.css";
+import { LinkButton } from "../LinkButton/LinkButton";
 
 export const CardAppointment = ({ appointmentId, nameProduct, imageProduct, service, email, artist, date, shift }) => {
 
@@ -18,7 +19,7 @@ export const CardAppointment = ({ appointmentId, nameProduct, imageProduct, serv
                 <div className="service">{service}</div>
             </div>
             <button className="button-spoiler" onClick={toggleCollapse}>
-                {collapsed ? "Show more" : "Hide"}
+                {collapsed ? "Details" : "Hide"}
             </button>
             {!collapsed && (
                 <div className="card-appointment-right">
@@ -31,6 +32,13 @@ export const CardAppointment = ({ appointmentId, nameProduct, imageProduct, serv
                     </div>
                     {/* <div className="appointmentId">{appointmentId}</div> */}
                     <div className="shift">{shift}</div>
+
+                    <LinkButton
+                        classButton={"button-update-appointment"}
+                        path={"/updateAppointment"}
+                        title={<div className="button-update-appointment" > <img src="https://cdn.icon-icons.com/icons2/1558/PNG/512/353430-checkbox-edit-pen-pencil_107516.png" alt="" /></div>}
+                    />
+
                 </div>
             )}
         </div>

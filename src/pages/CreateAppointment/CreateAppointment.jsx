@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { checker } from "../../services/checker";
 import { createAppointment } from "../../services/apiCalls";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
+import ShiftToggle from "../../common/ShiftToggle/ShiftToggle";
 
 export const CreateAppointment = () => {
 
@@ -22,7 +23,6 @@ export const CreateAppointment = () => {
         emailError: "",
         idError: ""
     });
-
 
     const [message, setMessage] = useState("");
 
@@ -67,7 +67,6 @@ export const CreateAppointment = () => {
                 });
         }
     };
-    
 
     return (
         <div className="create-appointment-body">
@@ -82,13 +81,11 @@ export const CreateAppointment = () => {
                 />
                 <div className='error-style'>{dataAppointmentsError.dateError}</div>
 
-                <CustomInput
-                    design={"inputStyle"}
-                    type={"text"}
-                    name={"shift"}
-                    placeholder={"shift"}
-                    functionProp={functionHandler}
-                    functionBlur={errorCheck}
+                <ShiftToggle
+                    selectedShift={dataAppointments.shift}
+                    onShiftChange={(value) =>
+                        setdataAppointments((prevState) => ({ ...prevState, shift: value }))
+                    }
                 />
                 <div className='error-style'>{dataAppointmentsError.shiftError}</div>
 

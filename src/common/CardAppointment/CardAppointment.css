@@ -8,7 +8,7 @@
   text-align: center;
   padding: 1em 0em 1em 0em;
   border-radius: 0.5em;
-  background-color: rgb(161, 172, 219);
+  background-color: #a1acdb;
   margin: 3em;
   transition: 1s;
 }
@@ -50,4 +50,22 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.button-update-appointment{ 
+  cursor:pointer;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 4em;
+  width: 4em;
+}
+
+.button-update-appointment img{ 
+  cursor:pointer;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 4em;
+  width: 4em;
 }
