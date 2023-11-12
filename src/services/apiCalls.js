@@ -31,9 +31,9 @@ export const updateProfile = (body, token) => {
 };
 
 export const appointmentsUsers = (token) => {
-  return axios.get("http://localhost:4000/user/appointments/get-all-my-appointments", {
+  return axios.get("http://localhost:4000/user/appointments/get-all-my-appointments?page=1&skip=10", {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
-};
+}
