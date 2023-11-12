@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import "./CardAppointment.css";
 import { LinkButton } from "../LinkButton/LinkButton";
 
-export const CardAppointment = ({ appointmentId, nameProduct, imageProduct, service, email, artist, date, shift }) => {
+export const CardAppointment = ({ appointmentId, nameProduct, imageProduct, service, email, artist, date, shift, emit}) => {
 
     const [collapsed, setCollapsed] = useState(true);
 
     const toggleCollapse = () => {
         setCollapsed(!collapsed);
+        emit()
     };
 
     return (

@@ -19,6 +19,10 @@ export const Appointments = () => {
         .catch((error) => console.log(error));
     }
   }, []);
+
+  const localIdAppointment = (argumento) => {
+    localStorage.setItem("appoitmentId", argumento)
+  }
   console.log(appointments);
   return (
     <div className="cards-appointment-body">
@@ -26,10 +30,10 @@ export const Appointments = () => {
         <div className="cards-appointment-container">
           <div>
 
-          <LinkButton
-                classButton={"link-button-style"}
-                path={"/create-appointment"}
-                title={"CreateAppointment"}
+            <LinkButton
+              classButton={"link-button-style"}
+              path={"/create-appointment"}
+              title={"CreateAppointment"}
             />
             {appointments.map((appointment) => (
 
@@ -43,6 +47,7 @@ export const Appointments = () => {
                 artist={appointment.full_name}
                 date={appointment.date}
                 shift={appointment.shift}
+                emit={() => localIdAppointment(appointment.id)}
               />
 
             ))}
