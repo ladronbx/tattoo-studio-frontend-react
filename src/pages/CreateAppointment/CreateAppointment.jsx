@@ -2,23 +2,32 @@ import React, { useState, useEffect } from "react"
 import "./CreateAppointment.css"
 import { useNavigate } from "react-router-dom";
 import { checker } from "../../services/checker";
+import { createAppointment } from "../../services/apiCalls";
+import { CustomInput } from "../../common/CustomInput/CustomInput";
 
 export const CreateAppointment = () => {
 
     const navigate = useNavigate();
 
-    const [createAppointments, setcreateAppointments] = useState({
+    const [dataAppointments, setdataAppointments] = useState({
         date: "",
         shift: "",
         email: "",
         id: ""
     });
 
+    const [dataAppointmentsError, setdataAppointmensError] = useState({
+        dateError: "",
+        shiftError: "",
+        emailError: "",
+        idError: ""
+    });
+
 
     const [message, setMessage] = useState("");
 
     const functionHandler = (e) => {
-        setCredentials((prevState) => ({
+        setdataAppointments((prevState) => ({
             ...prevState,
             [e.target.name]: e.target.value
         }));
@@ -28,7 +37,7 @@ export const CreateAppointment = () => {
         let error = "";
         error = checker(e.target.name, e.target.value);
 
-        setCredentialsError((prevState) => ({
+        setdataAppointmensError((prevState) => ({
             ...prevState,
             [e.target.name + 'Error']: error,
         }));
@@ -36,24 +45,20 @@ export const CreateAppointment = () => {
 
     const Create = () => {
         if (
-            credentials.full_name !== "" &&
-            credentials.password !== "" &&
-            credentials.phone_number !== ""
+            dataAppointments.date !== "" &&
+            dataAppointments.shift !== "" &&
+            dataAppointments.email !== "" &&
+            dataAppointments.id !== ""
         ) {
-            const credentialsWithNumber = {
-                ...credentials,
-                phone_number: parseInt(credentials.phone_number, 10),
-                photo: photoDefault(credentials.photo),
-            };
             const token = localStorage.getItem("token");
-            updateProfile(credentialsWithNumber, token)
+            createAppointment(dataAppointments, token)
                 .then((response) => {
                     console.log(response.data);
                     const { message, error } = response.data;
                     setMessage(message);
                     if (!error) {
                         setTimeout(() => {
-                            navigate("/profile");
+                            navigate("/appointments");
                         }, 2000);
                     }
                 })
@@ -62,9 +67,10 @@ export const CreateAppointment = () => {
                 });
         }
     };
+    
 
     return (
-        <div className="register-body">
+        <div className="create-appointment-body">
             <div className="input-card">
                 <CustomInput
                     design={"inputStyle"}
@@ -74,17 +80,17 @@ export const CreateAppointment = () => {
                     functionProp={functionHandler}
                     functionBlur={errorCheck}
                 />
-                <div className='error-style'>{credentialsError.full_nameError}</div>
+                <div className='error-style'>{dataAppointmentsError.dateError}</div>
 
                 <CustomInput
                     design={"inputStyle"}
-                    type={"shift"}
+                    type={"text"}
                     name={"shift"}
                     placeholder={"shift"}
                     functionProp={functionHandler}
                     functionBlur={errorCheck}
                 />
-                <div className='error-style'>{credentialsError.shiftError}</div>
+                <div className='error-style'>{dataAppointmentsError.shiftError}</div>
 
                 <CustomInput
                     design={"inputDesign"}
@@ -94,17 +100,17 @@ export const CreateAppointment = () => {
                     functionProp={functionHandler}
                     functionBlur={errorCheck}
                 />
-                <div className='error-style'>{credentialsError.emailError}</div>
+                <div className='error-style'>{dataAppointmentsError.emailError}</div>
 
                 <CustomInput
                     design={"inputDesign"}
-                    type={"id"}
+                    type={"number"}
                     name={"id"}
                     placeholder={"id"}
                     functionProp={functionHandler}
                     functionBlur={errorCheck}
                 />
-                <div className='error-style'>{credentialsError.idError}</div>
+                <div className='error-style'>{dataAppointmentsError.idError}</div>
 
                 <div className='button-submit' onClick={Create}>Create appointment</div>
                 <p>{message}</p>

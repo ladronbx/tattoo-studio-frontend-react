@@ -78,15 +78,17 @@ export const checker = (type, value) => {
 
         case `id`:
 
+            const numberParse = parseInt(value)
             if (!value) {
                 return "you must insert an number "
-            } else if (typeof (value) !== "number") {
+            } else if (typeof (numberParse) !== "number") {
                 return `you must insert a number`
-            };
-            const toString = value.toString()
-            if (toString.length > 20) {
+            } else if (value.length > 20) {
                 return `number too long, max 20,try again`
+            } else {
+                return ``;
             }
+
 
         case `shift`:
 
@@ -96,7 +98,9 @@ export const checker = (type, value) => {
                 return "you can put only strings, try again"
             } else if (value !== "morning" && value !== "afternoon") {
                 return "shift incorrect, you only can put morning or afternoon"
-            };
+            } else {
+                return ``
+            }
 
         case `date`:
 
@@ -106,7 +110,9 @@ export const checker = (type, value) => {
                 return "date incorrect, you can put only strings"
             } else if (! /^\d{4}-\d{2}-\d{2}$/.test(value)) {
                 return "date incorrect, The date format should be YYYY-MM-DD, try again"
-            };
+            } else {
+                return ``
+            }
 
     }
 }
