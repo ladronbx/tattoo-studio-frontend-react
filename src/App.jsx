@@ -5,7 +5,6 @@ import { Body } from './pages/Body/Body';
 
 function App() {
   return (
-    // Envuelve toda tu aplicación con MantineProvider
     <MantineProvider>
       <>
         <Header />
