@@ -37,3 +37,11 @@ export const appointmentsUsers = (token) => {
     },
   });
 }
+
+// export const createAppointment = (body, token) => {
+//   return axios.post("http://localhost:4000/user/appointments/create", body, {
+//     headers: {
+//       Authorization: `Bearer ${token}`,
+//     },
+//   });
+// }

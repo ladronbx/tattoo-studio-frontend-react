@@ -66,13 +66,47 @@ export const checker = (type, value) => {
 
         case `photo`:
 
-        if (typeof (value) !== `string`) {
-            return `Incorrect ${type}, it should only contain strings`
-        } else if (value.length > 200) {
-            return `${type} is too long, max 200 characters`
-        } else {
-            return ``
-        }
+            if (typeof (value) !== `string`) {
+                return `Incorrect ${type}, it should only contain strings`
+            } else if (value.length > 200) {
+                return `${type} is too long, max 200 characters`
+            } else {
+                return ``
+            }
+
+
+
+        case `id`:
+
+            if (!value) {
+                return "you must insert an number "
+            } else if (typeof (value) !== "number") {
+                return `you must insert a number`
+            };
+            const toString = value.toString()
+            if (toString.length > 20) {
+                return `number too long, max 20,try again`
+            }
+
+        case `shift`:
+
+            if (!value) {
+                return "you must insert a shift"
+            } else if (typeof (value) !== "string") {
+                return "you can put only strings, try again"
+            } else if (value !== "morning" && value !== "afternoon") {
+                return "shift incorrect, you only can put morning or afternoon"
+            };
+
+        case `date`:
+
+            if (!value) {
+                return "you must insert a date"
+            } else if (typeof (value) !== "string") {
+                return "date incorrect, you can put only strings"
+            } else if (! /^\d{4}-\d{2}-\d{2}$/.test(value)) {
+                return "date incorrect, The date format should be YYYY-MM-DD, try again"
+            };
 
     }
 }
