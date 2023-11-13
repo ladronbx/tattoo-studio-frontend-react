@@ -2,7 +2,6 @@
 export const checker = (type, value) => {
 
     switch (type) {
-
         case `email`:
         case `correo`:
         case `mail`:

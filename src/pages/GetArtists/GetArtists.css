@@ -1,7 +1,10 @@
-.artistsStyle{
-    height: 84vh;
-    width: 100vw;
+.cards-artists-body {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
+
+.card {
+    width: calc(33.33% - 1em);
+    margin-bottom: 1em;
+  }

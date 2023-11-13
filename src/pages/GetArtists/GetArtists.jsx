@@ -22,7 +22,7 @@ export const GetArtists = () => {
     }, [artists])
 
     return (
-        <div className="card-style">
+        <div className="cards-artists-body">
             {
                 artists.length > 0
 

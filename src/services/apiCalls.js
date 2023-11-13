@@ -31,7 +31,7 @@ export const updateProfile = (body, token) => {
 };
 
 export const appointmentsUsers = (token) => {
-  return axios.get("http://localhost:4000/user/appointments/get-all-my-appointments?page=1&skip=10", {
+  return axios.get("http://localhost:4000/user/appointments/get-all-my-appointments?page=2&skip=10", {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -45,3 +45,19 @@ export const createAppointment = (body, token) => {
     },
   });
 }
+
+export const updateAppointment = (body, token) => {
+  return axios.put("http://localhost:4000/user/appointments/update", body, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const getAllUsers = (token) => {
+  return axios.get("http://localhost:4000/user/super/get/all/users?page=1&skip=10", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};

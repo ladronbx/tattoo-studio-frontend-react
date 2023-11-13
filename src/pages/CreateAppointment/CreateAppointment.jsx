@@ -51,6 +51,7 @@ export const CreateAppointment = () => {
             dataAppointments.id !== ""
         ) {
             const token = localStorage.getItem("token");
+            console.log(dataAppointments);
             createAppointment(dataAppointments, token)
                 .then((response) => {
                     console.log(response.data);

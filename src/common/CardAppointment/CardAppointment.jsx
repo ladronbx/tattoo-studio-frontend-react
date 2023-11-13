@@ -37,7 +37,7 @@ export const CardAppointment = ({ appointmentId, nameProduct, imageProduct, serv
 
                     <LinkButton
                         classButton={"button-update-appointment"}
-                        path={"/updateAppointment"}
+                        path={"/update-appointment"}
                         title={<div className="button-update-appointment" > <img src="https://cdn.icon-icons.com/icons2/1558/PNG/512/353430-checkbox-edit-pen-pencil_107516.png" alt="" />
                         </div>}
                         emit={() => emit()}

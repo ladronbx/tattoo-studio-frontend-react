@@ -1,0 +1,22 @@
+body{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(0, 0, 0);
+    width: 100vw
+}
+
+.homeStyle{
+    height: 84vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tokenStyle{
+    color: red;
+}
+
+.loginStyle{
+    background-color: black;
+}
