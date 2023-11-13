@@ -2,12 +2,14 @@ import React from "react";
 import "./CardUser.css";
 
 export const CardUser = ({ full_name, photo, email, phone_number }) => {
-    return (
-        <div className="card">
-            <div className="name">{full_name}</div>
-            <img className="photo" src={photo} alt={full_name} />
-            <div className="email">{email}</div>
-            <div className="phone_number">{phone_number}</div>
-        </div>
-    );
+  return (
+    <div className="card">
+      <img className="card__photo" src={photo} alt={full_name} />
+      <div className="card__content">
+        <p className="card__title">{full_name}</p>
+        <p className="card__description">{email}</p>
+        <p className="card__description">{phone_number}</p>
+      </div>
+    </div>
+  );
 };

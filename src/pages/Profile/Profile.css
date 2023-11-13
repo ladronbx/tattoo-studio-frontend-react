@@ -1,40 +1,40 @@
 .card-user-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .card-user {
-    
-    color: black;
-    text-align: center;
-    padding: 1.25em;
-    border-radius: 0.5em;
-    box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    max-width: 25em;
-    width: 100%;
-  }
-  
-  .card-user img {
-    border-radius: 50%;
-    width: 7.5em;
-    height: 7.5em;
-    object-fit: cover;
-    margin-bottom: 1.25em;
-  }
-  
-  h1 {
-    font-size: 1.5em;
-    margin-bottom: 0.625em;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
-.button-update{
+.card-user {
+
+  color: black;
+  text-align: center;
+  padding: 1.25em;
+  border-radius: 0.5em;
+  box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  max-width: 25em;
+  width: 100%;
+}
+
+.card-user img {
+  border-radius: 50%;
+  width: 7.5em;
+  height: 7.5em;
+  object-fit: cover;
+  margin-bottom: 1.25em;
+}
+
+h1 {
+  font-size: 1.5em;
+  margin-bottom: 0.625em;
+}
+
+
+.button-update {
   display: flex;
   justify-content: center;
   color: rgb(0, 255, 123);
-  background-color:rgb(24, 23, 23);
+  background-color: rgb(24, 23, 23);
   width: 50%;
 }

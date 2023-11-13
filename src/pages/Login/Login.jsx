@@ -70,7 +70,7 @@ export const Login = () => {
                 design={"inputStyle"}
                 type={"email"}
                 name={"email"}
-                placeholder={"user@gmail.com"}
+                placeholder={"Email"}
                 functionProp={functionHandler}
                 functionBlur={errorCheck}
             />
@@ -79,7 +79,7 @@ export const Login = () => {
                 design={"inputStyle"}
                 type={"password"}
                 name={"password"}
-                placeholder={"Password1!"}
+                placeholder={"Password"}
                 functionProp={functionHandler}
                 functionBlur={errorCheck}
             />

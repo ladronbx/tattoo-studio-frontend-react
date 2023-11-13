@@ -1,17 +1,16 @@
-import './App.css';
-import { MantineProvider } from '@mantine/core';
-import { Header } from './common/Header/Header';
-import { Body } from './pages/Body/Body';
+
+import './App.css'
+import { Header } from './common/Header/Header'
+import { Body } from './pages/Body/Body'
 
 function App() {
+
   return (
-    <MantineProvider>
-      <>
-        <Header />
-        <Body />
-      </>
-    </MantineProvider>
-  );
+    <>
+      <Header />
+      <Body />
+    </>
+  )
 }
 
-export default App;
+export default App
