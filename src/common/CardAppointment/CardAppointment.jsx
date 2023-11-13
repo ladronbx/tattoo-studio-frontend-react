@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./CardAppointment.css";
 import { LinkButton } from "../LinkButton/LinkButton";
 
-export const CardAppointment = ({ appointmentId, nameProduct, imageProduct, service, email, artist, date, shift, price, emit }) => {
+export const CardAppointment = ({ appointmentId, nameProduct, imageProduct, service, email, artist, date, shift, price, emit, artist_name, client_name, user_email,  status }) => {
 
     const [collapsed, setCollapsed] = useState(true);
 
@@ -18,6 +18,14 @@ export const CardAppointment = ({ appointmentId, nameProduct, imageProduct, serv
                 <div className="date">{date}</div>
                 <div>Service : </div>
                 <div className="service">{service}</div>
+                <div>Artist name : </div>
+                <div className="artist_name">{artist_name}</div>
+                <div>Client name : </div>
+                <div className="client_name">{client_name}</div>
+                <div>Client email</div>
+                <div className="user_email">{user_email}</div>
+                <div>Status : </div>
+                <div className="status">{status}</div>
             </div>
             <button className="button-spoiler" onClick={toggleCollapse}>
                 {collapsed ? "Details" : "Hide"}
@@ -48,5 +56,3 @@ export const CardAppointment = ({ appointmentId, nameProduct, imageProduct, serv
         </div>
     );
 };
-
-

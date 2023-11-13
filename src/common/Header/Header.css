@@ -5,8 +5,8 @@
     justify-content: center;
     align-items: center;
     height: 16vh;
-    width: 100vw;
-    padding: 0.5em;
+    width: 100%;
+    padding: 0.1em;
     background-color: rgb(9, 9, 37);
     
 }

@@ -23,11 +23,13 @@ export const Appointments = () => {
 
   const localIdAppointment = (argumento) => {
     localStorage.setItem("appointmentId", argumento)
-}
+  }
   console.log(appointments);
   return (
     <div className="cards-appointment-body">
-      {appointments ? (
+      {
+      appointments 
+      ? (
         <div className="cards-appointment-container">
           <div>
 
@@ -53,8 +55,6 @@ export const Appointments = () => {
               />
 
             ))}
-
-
           </div>
         </div>
       ) : (

@@ -61,3 +61,10 @@ export const getAllUsers = (token) => {
     },
   });
 };
+export const getAllAppointments = (token) => {
+  return axios.get("http://localhost:4000/user/appointments/all-appointments-calendar?page=1&skip=10", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
