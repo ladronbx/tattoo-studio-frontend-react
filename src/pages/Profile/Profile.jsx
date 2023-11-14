@@ -3,8 +3,13 @@ import "./Profile.css";
 import { getProfile } from "../../services/apiCalls"
 import { useNavigate } from 'react-router-dom'
 import { LinkButton } from '../../common/LinkButton/LinkButton'
+import { useSelector } from "react-redux";
+import { selectToken } from "../userSlice";
 
 export const Profile = () => {
+
+    const rdxToken = useSelector(selectToken);
+
     const [user, setUser] = useState({
         full_name: "",
         email: "",
@@ -12,22 +17,19 @@ export const Profile = () => {
         photo: "",
 
     });
+
     const navigate = useNavigate();
 
     useEffect(() => {
-        const token = localStorage.getItem("token");
-        console.log(token)
 
-        if (token) {
-            getProfile(token)
+        if (rdxToken) {
+            getProfile(rdxToken)
                 .then((response) => {
                     setUser(response.data.data);
                 })
                 .catch((error) => { console.log(error) });
 
         } else {
-            // Si no hay token, redirige al usuario a la página de inicio de sesión
-            console.log("No hay token, redirigiendo a la página de inicio de sesión");
             navigate("/login");
         }
     }, []);

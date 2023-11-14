@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from 'react-redux';
 import "./Login.css";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
-import { login } from "../../services/apiCalls";
+import { logUser } from "../../services/apiCalls";
+import { login } from "../userSlice";
 import { checker } from "../../services/checker";
 import { useNavigate } from 'react-router-dom';
 
 export const Login = () => {
+
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const [credentials, setCredentials] = useState({
@@ -17,8 +21,6 @@ export const Login = () => {
         emailError: "",
         passwordError: ""
     });
-
-    // const [token, setToken] = useState("");
 
     const functionHandler = (e) => {
         setCredentials((prevState) => ({
@@ -44,16 +46,13 @@ export const Login = () => {
             credentials.password !== "" &&
             credentials.email !== ""
         ) {
-            login(credentials)
+            logUser(credentials)
                 .then((response) => {
-                    console.log(response.data);
-                    const { message} = response.data;
+                    const { message, token } = response.data;
                     setMessage(message);
-                    // setToken(token);
+
                     if (message == "Login successful. Token generated.") {
-                        //guarado el token en localstorage
-                        localStorage.setItem("token", response.data.token)
-                        console.log(response.data);
+                        dispatch(login(token))
                         navigate("/profile")
                     }
                 })
