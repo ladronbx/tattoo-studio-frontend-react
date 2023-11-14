@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import "./GetArtists.css"
-import { CardUser } from "../../common/CardUSer/CardUser"
+import { CardArtist } from "../../common/CardArtist/CardArtist"
 import { getArtists } from "../../services/apiCalls"
 
 export const GetArtists = () => {
@@ -30,7 +30,7 @@ export const GetArtists = () => {
                         <div>
                             {
                                 artists.map((artist) => {
-                                    return <CardUser
+                                    return <CardArtist
                                         key={artist.id}
                                         full_name={artist.full_name}
                                         photo={artist.photo}

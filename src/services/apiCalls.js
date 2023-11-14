@@ -1,21 +1,21 @@
-import axios from "axios";
+import axios from 'axios';
+
+const BASE_URL = 'http://localhost:4000/user/';
 
 export const login = async (body) => {
-  return await axios.post(`http://localhost:4000/user/login`, body);
-
+  return await axios.post(`${BASE_URL}login`, body);
 }
-export const registerUser = async (body) => {
-  return await axios.post(`http://localhost:4000/user/register`, body);
 
+export const registerUser = async (body) => {
+  return await axios.post(`${BASE_URL}register`, body);
 }
 
 export const getArtists = async () => {
-  return await axios.get(`http://localhost:4000/user/artists`);
-
+  return await axios.get(`${BASE_URL}artists`);
 }
 
 export const getProfile = (token) => {
-  return axios.get("http://localhost:4000/user/profile", {
+  return axios.get(`${BASE_URL}profile`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -23,7 +23,7 @@ export const getProfile = (token) => {
 };
 
 export const updateProfile = (body, token) => {
-  return axios.put("http://localhost:4000/user/profile/update", body, {
+  return axios.put(`${BASE_URL}profile/update`, body, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -31,7 +31,7 @@ export const updateProfile = (body, token) => {
 };
 
 export const appointmentsUsers = (token) => {
-  return axios.get("http://localhost:4000/user/appointments/get-all-my-appointments?page=2&skip=10", {
+  return axios.get(`${BASE_URL}appointments/get-all-my-appointments?page=2&skip=10`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -39,7 +39,7 @@ export const appointmentsUsers = (token) => {
 }
 
 export const createAppointment = (body, token) => {
-  return axios.post("http://localhost:4000/user/appointments/create", body, {
+  return axios.post(`${BASE_URL}appointments/create`, body, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -47,7 +47,7 @@ export const createAppointment = (body, token) => {
 }
 
 export const updateAppointment = (body, token) => {
-  return axios.put("http://localhost:4000/user/appointments/update", body, {
+  return axios.put(`${BASE_URL}appointments/update`, body, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -55,14 +55,15 @@ export const updateAppointment = (body, token) => {
 };
 
 export const getAllUsers = (token) => {
-  return axios.get("http://localhost:4000/user/super/get/all/users?page=1&skip=10", {
+  return axios.get(`${BASE_URL}super/get/all/users?page=1&skip=10`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 };
+
 export const getAllAppointments = (token) => {
-  return axios.get("http://localhost:4000/user/appointments/all-appointments-calendar?page=1&skip=10", {
+  return axios.get(`${BASE_URL}appointments/all-appointments-calendar?page=1&skip=10`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

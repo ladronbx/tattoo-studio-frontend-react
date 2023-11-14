@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import "./GetAllUsers.css"
 import { getAllUsers } from "../../services/apiCalls"
-import { CardUser } from "../../common/CardUSer/CardUser"
+import { CardUser } from "../../common/CardUser/CardUser"
 
 export const GetAllUsers = () => {
 
