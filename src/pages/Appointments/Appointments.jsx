@@ -3,15 +3,18 @@ import "./Appointments.css";
 import { CardAppointment } from "../../common/CardAppointment/CardAppointment";
 import { appointmentsUsers } from "../../services/apiCalls";
 import { LinkButton } from "../../common/LinkButton/LinkButton";
+import { useSelector } from "react-redux";
+import { selectToken } from "../userSlice";
 
 export const Appointments = () => {
   const [appointments, setAppointments] = useState([]);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    // const token = localStorage.getItem("token");
+    const rdxToken = useSelector(selectToken);
 
-    if (token && appointments.length === 0) {
-      appointmentsUsers(token)
+    if (rdxToken && appointments.length === 0) {
+      appointmentsUsers(rdxToken)
         .then((response) => {
           console.log(appointments);
           setAppointments(response.data.data);
@@ -22,9 +25,12 @@ export const Appointments = () => {
 
 
   const localIdAppointment = (argumento) => {
-    localStorage.setItem("appointmentId", argumento)
+    rdxToken.setItem("appointmentId", argumento)
   }
   console.log(appointments);
+
+
+  
   return (
     <div className="cards-appointment-body">
       {

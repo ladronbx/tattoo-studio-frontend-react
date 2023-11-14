@@ -15,7 +15,6 @@ export const Profile = () => {
         email: "",
         password: "",
         photo: "",
-
     });
 
     const navigate = useNavigate();

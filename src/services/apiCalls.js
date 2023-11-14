@@ -17,58 +17,58 @@ export const getServices = async () => {
   return await axios.get(`${BASE_URL}services`);
 }
 
-export const getProfile = (token) => {
+export const getProfile = (rdxToken) => {
   return axios.get(`${BASE_URL}profile`, {
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${rdxToken}`,
     },
   });
 };
 
-export const updateProfile = (body, token) => {
+export const updateProfile = (body, rdxToken) => {
   return axios.put(`${BASE_URL}profile/update`, body, {
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${rdxToken}`,
     },
   });
 };
 
-export const appointmentsUsers = (token) => {
+export const appointmentsUsers = (rdxToken) => {
   return axios.get(`${BASE_URL}appointments/get-all-my-appointments?page=2&skip=10`, {
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${rdxToken}`,
     },
   });
 }
 
-export const createAppointment = (body, token) => {
+export const createAppointment = (body, rdxToken) => {
   return axios.post(`${BASE_URL}appointments/create`, body, {
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${rdxToken}`,
     },
   });
 }
 
-export const updateAppointment = (body, token) => {
+export const updateAppointment = (body, rdxToken) => {
   return axios.put(`${BASE_URL}appointments/update`, body, {
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${rdxToken}`,
     },
   });
 };
 
-export const getAllUsers = (token) => {
+export const getAllUsers = (rdxToken) => {
   return axios.get(`${BASE_URL}super/get/all/users?page=1&skip=10`, {
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${rdxToken}`,
     },
   });
 };
 
-export const getAllAppointments = (token) => {
+export const getAllAppointments = (rdxToken) => {
   return axios.get(`${BASE_URL}appointments/all-appointments-calendar?page=1&skip=10`, {
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${rdxToken}`,
     },
   });
 };
