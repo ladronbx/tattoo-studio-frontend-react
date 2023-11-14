@@ -1,11 +1,4 @@
-body {
-    margin: 0;
-    padding: 0;
-    background-color: black;
-    color: rgb(117, 172, 219);
-  }
-  
-.homeStyle{
+.GetAllServices{
     height: 84vh;
     width: 100vw;
     display: flex;
@@ -13,9 +6,6 @@ body {
     align-items: center;
 }
 
-.tokenStyle{
-    color: red;
-}
 
 .loginStyle{
     background-color: black;

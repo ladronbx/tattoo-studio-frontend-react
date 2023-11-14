@@ -13,6 +13,9 @@ export const registerUser = async (body) => {
 export const getArtists = async () => {
   return await axios.get(`${BASE_URL}artists`);
 }
+export const getServices = async () => {
+  return await axios.get(`${BASE_URL}services`);
+}
 
 export const getProfile = (token) => {
   return axios.get(`${BASE_URL}profile`, {

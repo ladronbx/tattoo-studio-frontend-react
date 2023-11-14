@@ -2,9 +2,22 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-}
-
-.card {
-    width: calc(33.33% - 1em);
-    margin-bottom: 1em;
   }
+  @media screen and (max-width: 1200px) {
+    .card {
+      width: calc(50% - 1em);
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .card {
+      width: calc(50% - 1em);
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .card {
+      width: calc(100% - 1em);
+    }
+  }
+  

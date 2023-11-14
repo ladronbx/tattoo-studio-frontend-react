@@ -11,7 +11,8 @@ import { Appointments } from '../Appointments/Appointments';
 import { CreateAppointment } from '../CreateAppointment/CreateAppointment';
 import { UpdateAppointment } from '../UpdateAppointment/UpdateAppointment';
 import { GetAllUsers } from '../GetAllUsers/GetAllUsers';
-import { GetAllAppointments } from '../GetAllAppointments/GetAllAppointments';
+import { GetAllAppointments } from '../GetAllAppointments/GetAllAppointments'
+import { GetAllServices } from '../GetAllServices/GetAllServices';
 
 export const Body = () => {
      return (
@@ -29,6 +30,7 @@ export const Body = () => {
                 <Route path="/update-appointment" element={<UpdateAppointment />}/>
                 <Route path="/get-all-users" element={<GetAllUsers />}/>
                 <Route path="/get-all-appointments" element={<GetAllAppointments />}/>
+                <Route path="/get-all-services" element={<GetAllServices />}/>
             </Routes>
          </>
      )

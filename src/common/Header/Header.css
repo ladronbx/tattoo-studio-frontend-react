@@ -1,4 +1,5 @@
 .header-style{
+    color: aliceblue;
     margin: 0;
     display: flex;
     margin: 1em;
@@ -12,5 +13,5 @@
 }
 
 .link-button-style{
-    padding: 2em
+    padding: 1em
 }
