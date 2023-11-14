@@ -1,4 +1,3 @@
-
 export const checker = (type, value) => {
 
     switch (type) {
@@ -62,7 +61,6 @@ export const checker = (type, value) => {
                 return ``;
             }
 
-
         case `photo`:
 
             if (typeof (value) !== `string`) {
@@ -72,8 +70,6 @@ export const checker = (type, value) => {
             } else {
                 return ``
             }
-
-
 
         case `id`:
 
@@ -112,6 +108,5 @@ export const checker = (type, value) => {
             } else {
                 return ``
             }
-
     }
 }
