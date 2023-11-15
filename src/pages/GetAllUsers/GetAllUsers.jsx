@@ -5,56 +5,51 @@ import { CardUser } from "../../common/CardUser/CardUser";
 import { useSelector } from "react-redux";
 import { selectToken } from "../userSlice";
 import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 
 export const GetAllUsers = () => {
-    const rdxToken = useSelector(selectToken);
-    const [decodedToken, setDecodedToken] = useState(null);
-    const [users, setUsers] = useState([]);
 
-    useEffect(() => {
-        if (rdxToken) {
-            try {
-                const decoded = jwtDecode(rdxToken);
-                console.log(decoded.role);
-                setDecodedToken(decoded);
-            } catch (error) {
-                console.error("Error decoding token:", error);
-            }
-        }
-    }, [rdxToken]);
+const rdxToken = useSelector(selectToken);
+  const navigate = useNavigate();
+  const [users, setusers] = useState([])
 
-    useEffect(() => {
-        if (rdxToken) {
-            getAllUsers(rdxToken)
-                .then((users) => {
-                    setUsers(users.data.data);
-                })
-                .catch((error) => console.log(error));
-        }
-    }, [rdxToken]);
+  useEffect(() => {
+    if (rdxToken) {
+      const decoded = jwtDecode(rdxToken);
+      console.log(decoded);
+      if (decoded.role == "super_admin") {
+        getAllUsers(rdxToken)
+          .then(
+            response => {
+              if (users.length == 0) {
+                setusers(response.data.data);
+              }
+            })
+          .catch(error => console.log(error));
+      } else {
+        navigate("/");
+      }
+    } else {
+      navigate("/");
+    }
+  }, [users]);
 
     return (
         <div className="cards-users-body">
             {users.length > 0 
             ? (
                 <div>
-                    {users.map((user) => {
-                        if (decodedToken && decodedToken.role === "super_admin") {
-                            return (
-                                <CardUser
-                                    key={user.id}
-                                    full_name={user.full_name}
-                                    photo={user.photo}
-                                    email={user.email}
-                                    phone_number={user.phone_number}
-                                    is_active={user.is_active}
-                                    role_id={user.role_id}
-                                />
-                            );
-                        } else {
-                            return null;
-                        }
-                    })}
+                    {users.map((user) => (
+                        <CardUser
+                            key={user.id}
+                            full_name={user.full_name}
+                            photo={user.photo}
+                            email={user.email}
+                            phone_number={user.phone_number}
+                            is_active={user.is_active}
+                            role_id={user.role_id}
+                        />
+                    ))}
                 </div>
             ) : (
                 <div>Loading ...</div>
