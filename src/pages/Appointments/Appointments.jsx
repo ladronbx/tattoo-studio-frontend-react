@@ -1,37 +1,39 @@
 import React, { useState, useEffect } from "react";
-import "./Appointments.css";
-import { CardAppointment } from "../../common/CardAppointment/CardAppointment";
+import "./Appointments.css"
 import { appointmentsUsers } from "../../services/apiCalls";
+import { CardAppointment } from "../../common/CardAppointment/CardAppointment";
 import { LinkButton } from "../../common/LinkButton/LinkButton";
-import { useSelector } from "react-redux";
-import { selectToken } from "../userSlice";
 import { useNavigate } from "react-router-dom";
+import { selectToken } from "../userSlice";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { appointmentId } from "../appointmentSlice";
 
 export const Appointments = () => {
-  
-  const navigate = useNavigate(); 
+
   const rdxToken = useSelector(selectToken);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
+  const [appointments, setAppointments] = useState([])
 
-  const [appointments, setAppointments] = useState([]); 
+  useEffect(() => {
+    if (rdxToken && appointments.length == 0) {
+      appointmentsUsers(rdxToken)
+        .then(response => {
+          setAppointments(response.data.data);
+        })
+        .catch(error => console.log(error));
+    } else {
+      navigate("/");
+    }
+  }, []);
 
-  useEffect(() => { 
+  const rdxIdAppointment = (argumento) => {
+    dispatch(appointmentId(argumento))
+  }
 
-      if (rdxToken && appointments.length == 0) {
-          appointmentsUsers(rdxToken)
-              .then(response => { 
-                  setAppointments(response.data.data)
-              })
-              .catch(error => console.log(error))
-      } else {
-          navigate("/login");
-      } 
-
-  }, []); 
-
-  const localStorageId = (argumento) => {
-      localStorage.setItem("appointmentId", argumento)
-  } 
+  console.log(appointments);
   return (
     <div className="cards-appointment-body">
       {
@@ -58,7 +60,7 @@ export const Appointments = () => {
                 artist_name={appointment.full_name}
                 shift={appointment.shift}
                 price={appointment.price}
-                emit={() => localStorageId(appointment.id)}
+                emit={() => rdxIdAppointment(appointment.id)}
               />
 
             ))}
