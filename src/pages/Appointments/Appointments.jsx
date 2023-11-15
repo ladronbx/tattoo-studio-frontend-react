@@ -8,6 +8,7 @@ import { selectToken } from "../userSlice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { appointmentId } from "../appointmentSlice";
+import { RemoveButton } from "../../common/RemoveButton/RemoveButton";
 
 export const Appointments = () => {
 
@@ -66,7 +67,6 @@ export const Appointments = () => {
                 price={appointment.price}
                 emit={() => rdxIdAppointment(appointment.id)}
               />
-
             ))}
           </div>
         </div>
@@ -75,4 +75,4 @@ export const Appointments = () => {
       )}
     </div>
   );
-};
+}
