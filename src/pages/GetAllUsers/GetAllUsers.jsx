@@ -2,23 +2,31 @@ import React, { useState, useEffect } from "react"
 import "./GetAllUsers.css"
 import { getAllUsers } from "../../services/apiCalls"
 import { CardUser } from "../../common/CardUser/CardUser"
+import { useSelector } from "react-redux";
+import { selectToken } from "../userSlice";
 
 export const GetAllUsers = () => {
 
+    const rdxToken = useSelector(selectToken);
+
     const [users, setUsers] = useState([])
-
-
-    useEffect(() => {
-        if (users.length === 0) {
-            const token = localStorage.getItem("token")
-            getAllUsers(token)
-                .then(users => {
-                    console.log(users)
-                    setUsers(users.data.data)
-                })
+    
+  
+    console.log(rdxToken.role)
+  
+    useEffect(() => { 
+  
+        if (rdxToken && rdxToken.role == "super_user") {
+            getAllUsers(rdxToken)
+            .then(users => {
+                console.log(rdxToken)
+                setUsers(users.data.data)
+            })
                 .catch(error => console.log(error))
         }
-    }, [users])
+  
+    }, []); 
+  
 
     return (
         <div className="cards-users-body">
@@ -37,7 +45,7 @@ export const GetAllUsers = () => {
                                     if(user.role_id == 1){
                                         user.role_id = "This user is a client"
                                     } else if(user.role_id == 2){
-                                        user.role_id = "This user is a worker"
+                                        user.role_id = "This user is a artist"
                                     } else if (user.role_id == 3){
                                         user.role_id = "This user is a super admin"
                                     }

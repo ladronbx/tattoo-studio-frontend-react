@@ -1,28 +1,36 @@
 import React, { useState, useEffect } from "react";
 import "./GetAllAppointments.css";
-import { CardAppointment } from "../../common/CardAppointment/CardAppointment";
 import { LinkButton } from "../../common/LinkButton/LinkButton";
 import { getAllAppointments } from "../../services/apiCalls";
+import { CardSuperAppointments } from "../../common/CardSuperAppointments/CardSuperAppointments";
+import { useSelector } from "react-redux";
+import { selectToken } from "../userSlice";
+import { useNavigate } from "react-router-dom";
 
 export const GetAllAppointments = () => {
-  const [appointments, setAppointments] = useState([]);
+  const navigate = useNavigate(); 
+  const rdxToken = useSelector(selectToken);
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
 
-    if (token && appointments.length === 0) {
-      getAllAppointments(token)
-        .then((response) => {
-          console.log(response.data.data);
-          setAppointments(response.data.data);
-        })
-        .catch((error) => console.log(error));
-    }
-  }, []);
+  const [appointments, setAppointments] = useState([]); 
 
-  const localIdAppointment = (argumento) => {
-    localStorage.setItem("appointmentId", argumento);
-  };
+  useEffect(() => { 
+
+      if (rdxToken && appointments.length == 0) {
+          getAllAppointments(rdxToken)
+              .then(response => { 
+                  setAppointments(response.data.data)
+              })
+              .catch(error => console.log(error))
+      } else {
+          navigate("/login");
+      } 
+
+  }, []); 
+
+  const localStorageId = (argumento) => {
+      localStorage.setItem("appointmentId", argumento)
+  } 
 
   console.log(appointments);
 
@@ -45,7 +53,7 @@ export const GetAllAppointments = () => {
               }
 
               return (
-                <CardAppointment
+                <CardSuperAppointments
                   key={appointment.id}
                   appointmentId={appointment.id}
                   nameProduct={appointment.name}
@@ -60,8 +68,9 @@ export const GetAllAppointments = () => {
                   status={appointment.status}
                   shift={appointment.shift}
                   price={appointment.price}
-                  emit={() => localIdAppointment(appointment.id)}
+                  emit={() => localStorageId(appointment.id)}
                 />
+
               );
             })}
           </div>

@@ -50,12 +50,12 @@ export const Appointments = () => {
               <CardAppointment
                 key={appointment.id}
                 appointmentId={appointment.id}
+                date={appointment.date}
+                category={appointment.category}
                 nameProduct={appointment.name}
                 imageProduct={appointment.image}
-                service={appointment.category}
                 email={appointment.email}
-                artist={appointment.full_name}
-                date={appointment.date}
+                artist_name={appointment.full_name}
                 shift={appointment.shift}
                 price={appointment.price}
                 emit={() => localStorageId(appointment.id)}

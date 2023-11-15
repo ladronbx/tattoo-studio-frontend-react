@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "./CardAppointment.css";
+import "./CardSuperAppointments.css";
 import { LinkButton } from "../LinkButton/LinkButton";
 
-export const CardAppointment = ({ appointmentId, nameProduct, imageProduct, category, email, artist_name, date, shift, price, emit }) => {
+export const CardSuperAppointments = ({ appointmentId, nameProduct, imageProduct, category, email, artist_name, date, shift, price, emit, client_name, user_email, status }) => {
 
     const [collapsed, setCollapsed] = useState(true);
 
@@ -15,13 +15,17 @@ export const CardAppointment = ({ appointmentId, nameProduct, imageProduct, cate
         <div className="card-appointment" key={appointmentId}>
             <div className="date-category">
                 <div>Date: </div>
-                <div className="date-and-shift">{shift}{date}</div>
+                <div className="date">{date}</div>
                 <div>Service : </div>
                 <div className="category">{category}</div>
-                <div className="tattoo-artist-card-container">
-                    <div>Tattoo artist : </div>
-                    <div className="artist_name">{artist_name}</div>
-                </div>
+                {/* <div>Artist name : </div>
+                <div className="artist_name">{artist_name}</div> */}
+                <div>Client name : </div>
+                <div className="client_name">{client_name}</div>
+                <div>Client email</div>
+                <div className="user_email">{user_email}</div>
+                <div>Status : </div>
+                <div className="status">{status}</div>
             </div>
             <button className="button-spoiler" onClick={toggleCollapse}>
                 {collapsed ? "Details" : "Hide"}
@@ -29,21 +33,16 @@ export const CardAppointment = ({ appointmentId, nameProduct, imageProduct, cate
             {!collapsed && (
                 <div className="card-appointment-right">
                     <img className="photo" src={imageProduct} alt={nameProduct} />
-
                     <div className="nameProduct">{nameProduct}</div>
-
-                    <div className="price-container">
-                        <div>Price :</div>
-                        <div className="price">{price}€</div>
+                    <div className="price">{price}€</div>
+                    <div className="email">{email}</div>
+                    <div className="tattoo-artist-card-container">
+                        <div>Tattoo artist</div>
+                        <div className="artist_name">{artist_name}</div>
                     </div>
-
-                    <div className="tattoo-artist-email-container">
-                        <div>Tattoo artist email</div>
-                        <div className="email">{email}</div>
-                    </div>
-
                     {/* <div className="appointmentId">{appointmentId}</div> */}
-                    
+                    <div className="shift">{shift}</div>
+
                     <LinkButton
                         classButton={"button-update-appointment"}
                         path={"/update-appointment"}
