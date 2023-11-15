@@ -33,7 +33,7 @@ export const Header = () => {
         <div className="header-style">
             <LinkButton classButton={"link-button-style"} path={"/"} title={"Home"} />
             <LinkButton classButton={"link-button-style"} path={"/artists"} title={"Artists"} />
-            <LinkButton classButton={"link-button-style"} path={"/get-all-services"} title={"Get all Services"} />
+            <LinkButton classButton={"link-button-style"} path={"/gallery"} title={"Gallery"} />
 
             {rdxToken ? (
                 <>

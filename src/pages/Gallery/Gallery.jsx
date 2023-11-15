@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from "react"
-import "./GetAllServices.css"
+import "./Gallery.css"
 import { getServices } from "../../services/apiCalls"
 import { CardService } from "../../common/CardService/CardService"
 
-export const GetAllServices = () => {
+export const Gallery = () => {
 
     const [services, setservices] = useState([])
+    const [loop, setloop] = useState(false)
 
     useEffect(() => {
         if (services.length === 0) {
 
             getServices()
                 .then(services => {
-                    setservices(services.data.data)
+                    if(loop == false){
+                        setservices(services.data.data)
+                        setloop(true)             
+                    }
+
                 })
                 .catch(error => console.log(error))
 

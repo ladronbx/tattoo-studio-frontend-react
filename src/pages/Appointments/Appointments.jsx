@@ -16,12 +16,16 @@ export const Appointments = () => {
   const dispatch = useDispatch();
 
   const [appointments, setAppointments] = useState([])
+  const [loop, setloop] = useState(false)
 
   useEffect(() => {
     if (rdxToken && appointments.length == 0) {
       appointmentsUsers(rdxToken)
         .then(response => {
-          setAppointments(response.data.data);
+          if(loop == false) {
+            setAppointments(response.data.data);
+            setloop(true)
+          }
         })
         .catch(error => console.log(error));
     } else {

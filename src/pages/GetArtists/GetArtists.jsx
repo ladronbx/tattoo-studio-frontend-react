@@ -6,18 +6,19 @@ import { getArtists } from "../../services/apiCalls"
 export const GetArtists = () => {
 
     const [artists, setArtists] = useState([])
-
+    const [loop, setloop] = useState(false)
 
     useEffect(() => {
         if (artists.length === 0) {
 
             getArtists()
                 .then(artists => {
-                    console.log(artists)
-                    setArtists(artists.data.data)
+                    if(loop == false){
+                        setArtists(artists.data.data)
+                        setloop(true)
+                    }
                 })
                 .catch(error => console.log(error))
-
         }
     }, [artists])
 

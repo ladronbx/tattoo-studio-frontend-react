@@ -12,6 +12,7 @@ export const GetAllUsers = () => {
 const rdxToken = useSelector(selectToken);
   const navigate = useNavigate();
   const [users, setusers] = useState([])
+  const [loop, setloop] = useState(false)
 
   useEffect(() => {
     if (rdxToken) {
@@ -21,8 +22,9 @@ const rdxToken = useSelector(selectToken);
         getAllUsers(rdxToken)
           .then(
             response => {
-              if (users.length == 0) {
+              if(loop == false) {
                 setusers(response.data.data);
+                setloop(true)
               }
             })
           .catch(error => console.log(error));
@@ -36,7 +38,8 @@ const rdxToken = useSelector(selectToken);
 
     return (
         <div className="cards-users-body">
-            {users.length > 0 
+            {
+            users.length > 0 
             ? (
                 <div>
                     {users.map((user) => (

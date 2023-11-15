@@ -1,19 +1,28 @@
 import React, { useState, useEffect } from "react";
 import "./GetAllAppointments.css"
-
 import { LinkButton } from "../../common/LinkButton/LinkButton";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
-import { useSelector } from "react-redux";
-import { selectToken } from "../userSlice";
 import { CardSuperAppointments } from "../../common/CardSuperAppointments/CardSuperAppointments";
 import { getAllAppointments } from "../../services/apiCalls";
+
+//Rdx escritura
+import { useDispatch } from "react-redux";
+import { appointmentId } from "../appointmentSlice";
+
+//Rdx lectura
+import { useSelector } from "react-redux";
+import { selectToken } from "../userSlice";
+
 
 export const GetAllAppointments = () => {
   
   const rdxToken = useSelector(selectToken);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [appointments, setAppointments] = useState([])
+  const [loop, setloop] = useState(false)
 
   useEffect(() => {
     if (rdxToken) {
@@ -23,8 +32,9 @@ export const GetAllAppointments = () => {
         getAllAppointments(rdxToken)
           .then(
             response => {
-              if (appointments.length == 0) {
+              if (loop == false) {
                 setAppointments(response.data.data);
+                setloop(true);
               }
             })
           .catch(error => console.log(error));
@@ -36,8 +46,8 @@ export const GetAllAppointments = () => {
     }
   }, [appointments]);
 
-  const localStorageId = (argumento) => {
-    localStorage.setItem("appointmentId", argumento)
+  const rdxIdAppointment = (argumento) => {
+    dispatch(appointmentId(argumento))
   }
 
   return (
@@ -75,7 +85,7 @@ export const GetAllAppointments = () => {
                       status={appointment.status}
                       shift={appointment.shift}
                       price={appointment.price}
-                      emit={() => localStorageId(appointment.id)}
+                      emit={() => rdxIdAppointment(appointment.id)}
                     />
                   )
                 }
