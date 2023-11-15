@@ -5,9 +5,12 @@ import { useNavigate } from 'react-router-dom'
 import ShiftToggle from "../../common/ShiftToggle/ShiftToggle"
 import { CustomInput } from "../../common/CustomInput/CustomInput"
 import { updateAppointment } from "../../services/apiCalls";
+import { useSelector } from "react-redux";
+import { selectToken } from "../userSlice";
 
 export const UpdateAppointment = () => {
 
+    const rdxToken = useSelector(selectToken);
     const navigate = useNavigate();
 
     const [appointment, setAppointment] = useState({
@@ -29,11 +32,13 @@ export const UpdateAppointment = () => {
 
 
     useEffect(() => {
-        if (appointment.id === "") {
-            const id = localStorage.getItem("appointmentId")
+        if (rdxToken) {
+            const id = localStorage.getItem("appointmentId");
             setAppointment((prevState) => ({ ...prevState, id: id }));
+        } else {
+            navigate("/");
         }
-    }, [appointment])
+    }, [rdxToken]);    
 
 
     const [message, setMessage] = useState("");
@@ -70,19 +75,18 @@ export const UpdateAppointment = () => {
                 portfolioId: parseInt(appointment.portfolioId, 10)
             };
 
-            const token = localStorage.getItem("token");
-
-            console.log(appointmentWithNumber);
+        
+            console.log(appointmentWithNumber, rdxToken);
  
-            updateAppointment(appointmentWithNumber, token)
+            updateAppointment(appointmentWithNumber, rdxToken)
                 .then((response) => {
                     console.log(response.data);
-                    const { message, error } = response.data;
+                    const { message } = response.data;
                     setMessage(message);
-                    if (error != "") {
+                    if (message == "Appointment updated succesfully") {
                         setTimeout(() => {
                             navigate("/appointments");
-                        }, 2000)
+                        }, 2500)
                     }
                 })
                 .catch(error => {

@@ -5,36 +5,37 @@ import { appointmentsUsers } from "../../services/apiCalls";
 import { LinkButton } from "../../common/LinkButton/LinkButton";
 import { useSelector } from "react-redux";
 import { selectToken } from "../userSlice";
+import { useNavigate } from "react-router-dom";
 
 export const Appointments = () => {
-  const [appointments, setAppointments] = useState([]);
-
-  useEffect(() => {
-    // const token = localStorage.getItem("token");
-    const rdxToken = useSelector(selectToken);
-
-    if (rdxToken && appointments.length === 0) {
-      appointmentsUsers(rdxToken)
-        .then((response) => {
-          console.log(appointments);
-          setAppointments(response.data.data);
-        })
-        .catch((error) => console.log(error));
-    }
-  }, []);
-
-
-  const localIdAppointment = (argumento) => {
-    rdxToken.setItem("appointmentId", argumento)
-  }
-  console.log(appointments);
-
-
   
+  const navigate = useNavigate(); 
+  const rdxToken = useSelector(selectToken);
+
+
+  const [appointments, setAppointments] = useState([]); 
+
+  useEffect(() => { 
+
+      if (rdxToken && appointments.length == 0) {
+          appointmentsUsers(rdxToken)
+              .then(response => { 
+                  setAppointments(response.data.data)
+              })
+              .catch(error => console.log(error))
+      } else {
+          navigate("/login");
+      } 
+
+  }, []); 
+
+  const localStorageId = (argumento) => {
+      localStorage.setItem("appointmentId", argumento)
+  } 
   return (
     <div className="cards-appointment-body">
       {
-      appointments 
+      appointments
       ? (
         <div className="cards-appointment-container">
           <div>
@@ -57,7 +58,7 @@ export const Appointments = () => {
                 date={appointment.date}
                 shift={appointment.shift}
                 price={appointment.price}
-                emit={() => localIdAppointment(appointment.id)}
+                emit={() => localStorageId(appointment.id)}
               />
 
             ))}
