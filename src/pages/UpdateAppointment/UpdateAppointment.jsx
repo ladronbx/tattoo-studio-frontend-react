@@ -3,17 +3,18 @@ import "./UpdateAppointment.css"
 import { useNavigate } from "react-router-dom";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import ShiftToggle from "../../common/ShiftToggle/ShiftToggle";
-import { updateAppointment } from "../../services/apiCalls";
+import { getArtists, getServices, updateAppointment } from "../../services/apiCalls";
 import { useSelector } from "react-redux";
 import { selectToken } from "../userSlice";
 import { selectAppointmentId } from "../appointmentSlice";
 import { checker } from "../../services/checker";
 
 export const UpdateAppointment = () => {
-
     const rdxToken = useSelector(selectToken);
     const rdxAppointmentId = useSelector(selectAppointmentId);
     const navigate = useNavigate();
+    const [gallery, setgallery] = useState("");
+    const [artists, setartists] = useState([])
 
     const [appointment, setAppointment] = useState({
         id: "",
@@ -32,7 +33,7 @@ export const UpdateAppointment = () => {
     });
 
     useEffect(() => {
-        if (rdxToken) {
+        if (rdxToken && rdxAppointmentId) {
             setAppointment((prevState) => ({ ...prevState, id: rdxAppointmentId }))
             console.log(rdxAppointmentId);
         } else {
@@ -59,6 +60,36 @@ export const UpdateAppointment = () => {
             [e.target.name + 'Error']: error,
         }));
     }
+
+    useEffect(() => {
+
+        if (artists.length === 0) {
+            getArtists()
+                .then(
+                    response => {
+                        setartists(response.data.data)
+                    }
+                )
+                .catch(error => console.log(error))
+        } else {
+            console.log(artists)
+        }
+    }, [artists]);
+
+    useEffect(() => {
+
+        if (gallery.length === 0) {
+            getServices()
+                .then(
+                    response => {
+                        setgallery(response.data.data)
+                    }
+                )
+                .catch(error => console.log(error))
+        } else {
+            console.log(gallery)
+        }
+    }, [gallery]);
 
     const Update = () => {
         if (
@@ -87,13 +118,15 @@ export const UpdateAppointment = () => {
                 .catch(error => {
                     console.log(error);
                 });
+                } else {
+            setMessage("All field are required");
+
         }
     };
     return (
         <div className="appointment-update-body">
 
             <div className="input-card">
-
 
                 <CustomInput
                     design={"inputDesign"}
@@ -111,28 +144,44 @@ export const UpdateAppointment = () => {
                     onShiftChange={(value) =>
                         setAppointment((prevState) => ({ ...prevState, shift: value }))
                     }
-
                 />
+
                 <div className='errorMsg'>{appointmentError.dateError}</div>
 
-                <CustomInput
-                    design={"inputDesign"}
-                    type={"number"}
-                    name={"portfolioId"}
-                    placeholder={"55"}
-                    functionProp={functionHandler}
-                    functionBlur={errorCheck}
-                />
-                <div className='errorMsg'>{appointmentError.portfolioIdError}</div>
-                <CustomInput
-                    design={"inputDesign"}
-                    type={"email"}
-                    name={"email"}
-                    placeholder={"user@gmail.com"}
-                    functionProp={functionHandler}
-                    functionBlur={errorCheck}
-                />
-                <div className='errorMsg'>{appointmentError.emailError}</div>
+                {
+                    artists.length > 0 &&
+
+                    <select name="email" onChange={functionHandler}>
+                        <option>Select an artist</option>
+                        {
+                            artists.map(
+                                artist => {
+                                    return (
+                                        <option key={artist.id} value={artist.email}>{artist.full_name}</option>
+                                    )
+                                }
+                            )
+                        }
+                    </select>
+                }
+
+                {
+                    gallery.length > 0 &&
+
+                    <select className = "gallery-select" name="portfolioId" onChange={functionHandler}>
+                        <option>Select a service</option>
+                        {
+                            gallery.map(
+                                service => {
+                                    return (
+                                        <option key={service.id} value={service.id}>{service.name}</option>
+                                    )
+                                }
+                            )
+                        }
+                    </select>
+                }
+              
                 <div className='animated-button' onClick={Update}>Update</div>
 
                 <p>{message}</p>

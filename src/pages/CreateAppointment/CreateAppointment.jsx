@@ -28,8 +28,6 @@ export const CreateAppointment = () => {
         idError: ""
     });
 
-
-
     // useEffect(() => {
     //     if (!rdxToken) {
     //         navigate("/");
@@ -38,7 +36,6 @@ export const CreateAppointment = () => {
 
     const [message, setMessage] = useState("");
     const [gallery, setgallery] = useState("");
-
     const [artists, setartists] = useState([])
 
     const functionHandler = (e) => {
@@ -138,13 +135,13 @@ export const CreateAppointment = () => {
                 {
                     artists.length > 0 &&
 
-                    <select name="email" value="email" onChange={functionHandler}>
+                    <select name="email" onChange={functionHandler}>
                         <option>Select an artist</option>
                         {
                             artists.map(
                                 artist => {
                                     return (
-                                        <option key={artist.id} value="email">{artist.full_name}</option>
+                                        <option key={artist.id} value={artist.email}>{artist.full_name}</option>
                                     )
                                 }
                             )
@@ -155,13 +152,13 @@ export const CreateAppointment = () => {
                 {
                     gallery.length > 0 &&
 
-                    <select className = "gallery-select" value="id" name="id" onChange={functionHandler}>
+                    <select className = "gallery-select" name="id" onChange={functionHandler}>
                         <option>Select a service</option>
                         {
                             gallery.map(
                                 service => {
                                     return (
-                                        <option key={service.id} value="id">{service.name}</option>
+                                        <option key={service.id} value={service.id}>{service.name}</option>
                                     )
                                 }
                             )
