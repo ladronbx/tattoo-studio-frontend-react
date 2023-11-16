@@ -65,8 +65,8 @@ export const getAllUsers = (rdxToken, page) => {
   });
 };
 
-export const getAllAppointments = (rdxToken) => {
-  return axios.get(`${BASE_URL}appointments/all-appointments-calendar?page=1&skip=10`, {
+export const getAllAppointments = (rdxToken, page) => {
+  return axios.get(`${BASE_URL}appointments/all-appointments-calendar?page=${page}&skip=10`, {
     headers: {
       Authorization: `Bearer ${rdxToken}`,
     },

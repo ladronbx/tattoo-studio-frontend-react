@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 import { PaginationButton } from "../../common/PaginationButton/PaginationButton";
 
 export const GetAllUsers = () => {
-
   const rdxToken = useSelector(selectToken);
   const navigate = useNavigate();
   const [users, setusers] = useState([])

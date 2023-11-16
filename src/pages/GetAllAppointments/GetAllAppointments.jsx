@@ -13,38 +13,50 @@ import { appointmentId } from "../appointmentSlice";
 //Rdx lectura
 import { useSelector } from "react-redux";
 import { selectToken } from "../userSlice";
+import { PaginationButton } from "../../common/PaginationButton/PaginationButton";
 
 
 export const GetAllAppointments = () => {
-  
+
   const rdxToken = useSelector(selectToken);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const [appointments, setAppointments] = useState([])
-  const [loop, setloop] = useState(false)
+  const [page, setPage] = useState(1)
 
   useEffect(() => {
     if (rdxToken) {
       const decoded = jwtDecode(rdxToken);
       console.log(decoded);
       if (decoded.role == "super_admin") {
-        getAllAppointments(rdxToken)
+        const pageString = page.toString()
+        getAllAppointments(rdxToken, pageString)
           .then(
-            response => {
-              if (loop == false) {
-                setAppointments(response.data.data);
-                setloop(true);
+            user => {
+              if (Array.isArray(user.data.data)) {
+                setAppointments(user.data.data)
+              } else {
+                setPage(page - 1)
               }
             })
-          .catch(error => console.log(error));
+          .catch((error) => console.log(error));
       } else {
         navigate("/");
       }
     } else {
       navigate("/");
     }
-  }, [appointments]);
+  }, [page]);
+
+  const changePageUp = () => {
+    setPage(page + 1)
+  }
+
+  const changePageDown = () => {
+    if (page != 0) {
+      setPage(page - 1)
+    }
+  }
 
   const rdxIdAppointment = (argumento) => {
     dispatch(appointmentId(argumento))
@@ -52,16 +64,29 @@ export const GetAllAppointments = () => {
 
   const removeAppointments = (body, token) => {
     removeAppointment(body, token)
-    .then(response =>{
+      .then(response => {
         console.log(response.data.message);
         // setAppointments(prevAppointments => prevAppointments.filter(app => app.id !== id));
-    } )
-    .catch(error => console.log(error))
-}
+      })
+      .catch(error => console.log(error))
+  }
   console.log(appointments);
 
   return (
+
     <div className="appointments-body">
+
+      <PaginationButton
+        classPagination={"next"}
+        text={"Next"}
+        changePagination={() => changePageUp()}
+      />
+      <PaginationButton
+        classPagination={"previus"}
+        text={"Previus"}
+        changePagination={() => changePageDown()}
+      />
+
       {
         appointments.length > 0
           ? (<div className='appointments-Roster'>
