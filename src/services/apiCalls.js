@@ -57,8 +57,8 @@ export const updateAppointment = (body, rdxToken) => {
   });
 };
 
-export const getAllUsers = (rdxToken) => {
-  return axios.get(`${BASE_URL}super/get/all/users?page=1&skip=10`, {
+export const getAllUsers = (rdxToken, page) => {
+  return axios.get(`${BASE_URL}super/get/all/users?page=${page}&skip=10`, {
     headers: {
       Authorization: `Bearer ${rdxToken}`,
     },

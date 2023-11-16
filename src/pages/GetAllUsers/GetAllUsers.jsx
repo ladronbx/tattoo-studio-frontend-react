@@ -6,57 +6,82 @@ import { useSelector } from "react-redux";
 import { selectToken } from "../userSlice";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
+import { PaginationButton } from "../../common/PaginationButton/PaginationButton";
 
 export const GetAllUsers = () => {
 
-const rdxToken = useSelector(selectToken);
+  const rdxToken = useSelector(selectToken);
   const navigate = useNavigate();
   const [users, setusers] = useState([])
-  const [loop, setloop] = useState(false)
+  const [page, setPage] = useState(1)
 
   useEffect(() => {
     if (rdxToken) {
       const decoded = jwtDecode(rdxToken);
       console.log(decoded);
-      if (decoded.role == "super_admin") {
-        getAllUsers(rdxToken)
+      if (decoded.role === "super_admin") {
+        const pageString = page.toString()
+        getAllUsers(rdxToken, pageString)
           .then(
-            response => {
-              if(loop == false) {
-                setusers(response.data.data);
-                setloop(true)
+            user => {
+              if (Array.isArray(user.data.data)) {
+                setusers(user.data.data)
+              } else {
+                setPage(page - 1)
               }
             })
-          .catch(error => console.log(error));
+          .catch((error) => console.log(error));
       } else {
         navigate("/");
       }
     } else {
       navigate("/");
     }
-  }, [users]);
+  }, [page]);
 
-    return (
-        <div className="cards-users-body">
-            {
-            users.length > 0 
-            ? (
-                <div>
-                    {users.map((user) => (
-                        <CardUser
-                            key={user.id}
-                            full_name={user.full_name}
-                            photo={user.photo}
-                            email={user.email}
-                            phone_number={user.phone_number}
-                            is_active={user.is_active}
-                            role_id={user.role_id}
-                        />
-                    ))}
-                </div>
-            ) : (
-                <div>Loading ...</div>
-            )}
-        </div>
-    );
+  const changePageUp = () => {
+    setPage(page + 1)
+  }
+
+  const changePageDown = () => {
+    if (page != 0) {
+      setPage(page - 1)
+    }
+  }
+
+  return (
+
+    <div className="cards-users-body">
+            <PaginationButton
+                classPagination={"next"}
+                text={"Next"}
+                changePagination={()=>changePageUp()}
+            />
+            <PaginationButton 
+                classPagination={"previus"}
+                text={"Previus"}
+                changePagination={()=>changePageDown()}
+            />
+        
+      {
+        users.length > 0
+          ? (
+            <div>
+              {users.map((user) => (
+                <CardUser
+                  key={user.id}
+                  full_name={user.full_name}
+                  photo={user.photo}
+                  email={user.email}
+                  phone_number={user.phone_number}
+                  is_active={user.is_active}
+                  role_id={user.role_id}
+                />
+              ))}
+            </div>
+          ) : (
+            <div>Loading ...</div>
+          )}
+    </div>
+  );
 };
