@@ -3,8 +3,8 @@ import "./GetAllAppointments.css"
 import { LinkButton } from "../../common/LinkButton/LinkButton";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
-import { CardSuperAppointments } from "../../common/CardSuperAppointments/CardSuperAppointments";
-import { getAllAppointments } from "../../services/apiCalls";
+import { CardAppointment } from "../../common/CardAppointment/CardAppointment";
+import { getAllAppointments, removeAppointment } from "../../services/apiCalls";
 
 //Rdx escritura
 import { useDispatch } from "react-redux";
@@ -50,6 +50,16 @@ export const GetAllAppointments = () => {
     dispatch(appointmentId(argumento))
   }
 
+  const removeAppointments = (body, token) => {
+    removeAppointment(body, token)
+    .then(response =>{
+        console.log(response.data.message);
+        // setAppointments(prevAppointments => prevAppointments.filter(app => app.id !== id));
+    } )
+    .catch(error => console.log(error))
+}
+  console.log(appointments);
+
   return (
     <div className="appointments-body">
       {
@@ -64,13 +74,13 @@ export const GetAllAppointments = () => {
             <div>
               {
                 appointments.map(appointment => {
-                  if (appointment.status) {
-                    appointment.status = "pending"
-                  } else if (!appointment.status) {
-                    appointment.status = "done"
-                  }
+                  // if (appointment.status) {
+                  //   appointment.status = "pending"
+                  // } else if (!appointment.status) {
+                  //   appointment.status = "done"
+                  // }
                   return (
-                    <CardSuperAppointments
+                    <CardAppointment
                       key={appointment.id}
                       appointmentId={appointment.id}
                       nameProduct={appointment.name}
@@ -86,6 +96,8 @@ export const GetAllAppointments = () => {
                       shift={appointment.shift}
                       price={appointment.price}
                       emit={() => rdxIdAppointment(appointment.id)}
+                      remove={() => removeAppointments(appointment.id, rdxToken)}
+
                     />
                   )
                 }

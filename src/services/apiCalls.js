@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'axios'
 
 const BASE_URL = 'http://localhost:4000/user/';
 
@@ -34,7 +34,7 @@ export const updateProfile = (body, rdxToken) => {
 };
 
 export const appointmentsUsers = (rdxToken) => {
-  return axios.get(`${BASE_URL}appointments/get-all-my-appointments?page=2&skip=10`, {
+  return axios.get(`${BASE_URL}appointments/get-all-my-appointments?page=1&skip=10`, {
     headers: {
       Authorization: `Bearer ${rdxToken}`,
     },
@@ -69,6 +69,18 @@ export const getAllAppointments = (rdxToken) => {
   return axios.get(`${BASE_URL}appointments/all-appointments-calendar?page=1&skip=10`, {
     headers: {
       Authorization: `Bearer ${rdxToken}`,
+    },
+  });
+};
+
+export const removeAppointment = async (id, token) => {
+  console.log(token);
+  return await axios.delete(`${BASE_URL}appointments/delete-my-appointment`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    data: {
+      id: id,
     },
   });
 };

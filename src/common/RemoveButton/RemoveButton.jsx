@@ -1,8 +1,8 @@
 import './RemoveButton.css'
 
-export const RemoveButton = ({ emit }) => {
+export const RemoveButton = ({ remove }) => {
 
     return (
-        <div className="remove" onClick={() => emit(path)}>Remove</div>
+        <div className="remove" onClick={() => remove()}>Remove</div>
     )
 }

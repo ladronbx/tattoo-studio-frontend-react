@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "./CardAppointment.css";
 import { LinkButton } from "../LinkButton/LinkButton";
+import { RemoveButton } from "../RemoveButton/RemoveButton";
 
-export const CardAppointment = ({ appointmentId, nameProduct, imageProduct, category, email, artist_name, date, shift, price, emit }) => {
+export const CardAppointment = ({ appointmentId, nameProduct, imageProduct, category, email, artist_name, date, shift, price, emit, remove }) => {
 
     const [collapsed, setCollapsed] = useState(true);
 
@@ -43,7 +44,7 @@ export const CardAppointment = ({ appointmentId, nameProduct, imageProduct, cate
                     </div>
 
                     {/* <div className="appointmentId">{appointmentId}</div> */}
-                    
+
                     <LinkButton
                         classButton={"button-update-appointment"}
                         path={"/update-appointment"}
@@ -51,6 +52,9 @@ export const CardAppointment = ({ appointmentId, nameProduct, imageProduct, cate
                         </div>}
                         emit={() => emit()}
                     />
+
+                    <RemoveButton remove={() => remove()}/>
+
 
                 </div>
             )}

@@ -6,7 +6,12 @@ import { createAppointment } from "../../services/apiCalls";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import ShiftToggle from "../../common/ShiftToggle/ShiftToggle";
 
+//Rdx lectura
+import { useSelector } from "react-redux";
+import { selectToken } from "../userSlice";
+
 export const CreateAppointment = () => {
+    const rdxToken = useSelector(selectToken);
 
     const navigate = useNavigate();
 
@@ -50,9 +55,7 @@ export const CreateAppointment = () => {
             dataAppointments.email !== "" &&
             dataAppointments.id !== ""
         ) {
-            const token = localStorage.getItem("token");
-            console.log(dataAppointments);
-            createAppointment(dataAppointments, token)
+            createAppointment(dataAppointments, rdxToken)
                 .then((response) => {
                     console.log(response.data);
                     const { message, error } = response.data;

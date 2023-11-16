@@ -1,16 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import "./Login.css";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { logUser } from "../../services/apiCalls";
-import { login } from "../userSlice";
+import { login, userData } from "../userSlice";
 import { checker } from "../../services/checker";
 import { useNavigate } from 'react-router-dom';
 
 export const Login = () => {
-
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    const rdxUserData = useSelector(userData);
+
+    useEffect(() => {
+        if (rdxUserData) {
+            navigate("/")
+        }
+    }, [rdxUserData])
 
     const [credentials, setCredentials] = useState({
         email: "",
