@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import "./CreateAppointment.css"
 import { useNavigate } from "react-router-dom";
 import { checker } from "../../services/checker";
-import { createAppointment } from "../../services/apiCalls";
+import { createAppointment, getArtists } from "../../services/apiCalls";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import ShiftToggle from "../../common/ShiftToggle/ShiftToggle";
 
@@ -12,7 +12,6 @@ import { selectToken } from "../userSlice";
 
 export const CreateAppointment = () => {
     const rdxToken = useSelector(selectToken);
-
     const navigate = useNavigate();
 
     const [dataAppointments, setdataAppointments] = useState({
@@ -31,12 +30,31 @@ export const CreateAppointment = () => {
 
     const [message, setMessage] = useState("");
 
+    const [artists, setartists]=useState([])
+
     const functionHandler = (e) => {
         setdataAppointments((prevState) => ({
             ...prevState,
             [e.target.name]: e.target.value
         }));
     };
+
+    useEffect(() => {
+
+        if (artists.length === 0) {
+            getArtists()
+                .then(
+                    results => {
+                        setartists(results.data.data)
+                    }
+                )
+                .catch(error => console.log(error))
+        } else {
+            console.log("artists vale...", artists)
+        }
+    }, [artists]);
+
+
 
     const errorCheck = (e) => {
         let error = "";
@@ -93,15 +111,32 @@ export const CreateAppointment = () => {
                 />
                 <div className='error-style'>{dataAppointmentsError.shiftError}</div>
 
-                <CustomInput
+                {
+                    artists.length > 0 &&
+
+                    <select name="email" onChange={functionHandler}>
+                        <option>Select an artist</option>
+                        {
+                            artists.map(
+                                artist => {
+                                    return (
+                                        <option key={artist.id} >{artist.email }</option>
+                                    )
+                                }
+                            )
+                        }
+                    </select>
+                }
+
+                {/* <CustomInput
                     design={"inputDesign"}
                     type={"email"}
                     name={"email"}
                     placeholder={"email"}
                     functionProp={functionHandler}
                     functionBlur={errorCheck}
-                />
-                <div className='error-style'>{dataAppointmentsError.emailError}</div>
+                /> */}
+                {/* <div className='error-style'>{dataAppointmentsError.emailError}</div> */}
 
                 <CustomInput
                     design={"inputDesign"}

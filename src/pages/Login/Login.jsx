@@ -12,9 +12,9 @@ export const Login = () => {
     const navigate = useNavigate();
 
     const rdxUserData = useSelector(userData);
-
+    //no termina de funcionar
     useEffect(() => {
-        if (rdxUserData) {
+        if (rdxUserData.credentials.token) {
             navigate("/")
         }
     }, [rdxUserData])
