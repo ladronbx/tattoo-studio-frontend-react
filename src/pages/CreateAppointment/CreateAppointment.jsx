@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import "./CreateAppointment.css"
 import { useNavigate } from "react-router-dom";
 import { checker } from "../../services/checker";
-import { createAppointment, getArtists } from "../../services/apiCalls";
+import { createAppointment, getArtists, getServices } from "../../services/apiCalls";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import ShiftToggle from "../../common/ShiftToggle/ShiftToggle";
 
@@ -28,9 +28,18 @@ export const CreateAppointment = () => {
         idError: ""
     });
 
-    const [message, setMessage] = useState("");
 
-    const [artists, setartists]=useState([])
+
+    // useEffect(() => {
+    //     if (!rdxToken) {
+    //         navigate("/");
+    //     }
+    // }, []);
+
+    const [message, setMessage] = useState("");
+    const [gallery, setgallery] = useState("");
+
+    const [artists, setartists] = useState([])
 
     const functionHandler = (e) => {
         setdataAppointments((prevState) => ({
@@ -44,17 +53,30 @@ export const CreateAppointment = () => {
         if (artists.length === 0) {
             getArtists()
                 .then(
-                    results => {
-                        setartists(results.data.data)
+                    response => {
+                        setartists(response.data.data)
                     }
                 )
                 .catch(error => console.log(error))
         } else {
-            console.log("artists vale...", artists)
+            console.log(artists)
         }
     }, [artists]);
 
+    useEffect(() => {
 
+        if (gallery.length === 0) {
+            getServices()
+                .then(
+                    response => {
+                        setgallery(response.data.data)
+                    }
+                )
+                .catch(error => console.log(error))
+        } else {
+            console.log(gallery)
+        }
+    }, [gallery]);
 
     const errorCheck = (e) => {
         let error = "";
@@ -71,8 +93,7 @@ export const CreateAppointment = () => {
             dataAppointments.date !== "" &&
             dataAppointments.shift !== "" &&
             dataAppointments.email !== "" &&
-            dataAppointments.id !== ""
-        ) {
+            dataAppointments.id !== "") {
             createAppointment(dataAppointments, rdxToken)
                 .then((response) => {
                     console.log(response.data);
@@ -81,12 +102,15 @@ export const CreateAppointment = () => {
                     if (!error) {
                         setTimeout(() => {
                             navigate("/appointments");
-                        }, 2000);
+                        }, 1500);
                     }
                 })
                 .catch((error) => {
                     console.log(error);
                 });
+        } else {
+            setMessage("All field are required");
+
         }
     };
 
@@ -120,7 +144,7 @@ export const CreateAppointment = () => {
                             artists.map(
                                 artist => {
                                     return (
-                                        <option key={artist.id} >{artist.email }</option>
+                                        <option key={artist.id} >{artist.email}</option>
                                     )
                                 }
                             )
@@ -128,25 +152,22 @@ export const CreateAppointment = () => {
                     </select>
                 }
 
-                {/* <CustomInput
-                    design={"inputDesign"}
-                    type={"email"}
-                    name={"email"}
-                    placeholder={"email"}
-                    functionProp={functionHandler}
-                    functionBlur={errorCheck}
-                /> */}
-                {/* <div className='error-style'>{dataAppointmentsError.emailError}</div> */}
+                {
+                    gallery.length > 0 &&
 
-                <CustomInput
-                    design={"inputDesign"}
-                    type={"number"}
-                    name={"id"}
-                    placeholder={"id"}
-                    functionProp={functionHandler}
-                    functionBlur={errorCheck}
-                />
-                <div className='error-style'>{dataAppointmentsError.idError}</div>
+                    <select className = "galler-select" name="id" onChange={functionHandler}>
+                        <option>Select a service</option>
+                        {
+                            gallery.map(
+                                service => {
+                                    return (
+                                        <option key={service.id} >{service.id}</option>
+                                    )
+                                }
+                            )
+                        }
+                    </select>
+                }
 
                 <div className='button-submit' onClick={Create}>Create appointment</div>
                 <p>{message}</p>
