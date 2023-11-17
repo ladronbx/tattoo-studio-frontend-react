@@ -1,12 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Register.css";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
-import { registerUser } from "../../services/apiCalls";
+import { logUser, registerUser } from "../../services/apiCalls";
 import { useNavigate } from 'react-router-dom';
 import { checker } from "../../services/checker";
 
+//Rdx escritura
+import { useDispatch } from "react-redux";
+import { login} from "../userSlice";
+
+//Rdx
+import { useSelector } from "react-redux";
+import { selectToken } from "../userSlice";
+
 export const Register = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const rdxUserData = useSelector(selectToken);
+
+  useEffect(() => {
+    if (rdxUserData) {
+        navigate("/");
+    }
+}, []);
+
+
   const [credentials, setCredentials] = useState({
     full_name: "",
     email: "",
@@ -62,21 +80,33 @@ export const Register = () => {
       registerUser(credentialsWithNumber)
         .then((response) => {
           console.log(response.data);
-          const { message, error } = response.data;
+          const { message } = response.data;
           setMessage(message);
-
-          if (!error) {
-            // Si no hay error, redirigir a la vista de login después de 2 segundos
-            setTimeout(() => {
-              navigate("/login");
-            }, 2000);
-          }
         })
         .catch((error) => {
           console.log(error);
         });
     }
   };
+
+  useEffect(() => {
+    if (message === "User registered successfully") { 
+      logUser(credentials)
+        .then((response) => {
+          const { message, token } = response.data;
+          setMessage(message);
+          if (message === "Login successful. Token generated.") {
+            console.log("hola")
+            dispatch(login(token));
+            navigate("/profile");
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  }, [message]);
+
 
 
 

@@ -1,88 +1,110 @@
 import React, { useState, useEffect } from "react";
-import "./Appointments.css"
+import { useNavigate } from "react-router-dom"; 
+import "./Appointments.css";
 import { appointmentsUsers, removeAppointment } from "../../services/apiCalls";
 import { CardAppointment } from "../../common/CardAppointment/CardAppointment";
 import { LinkButton } from "../../common/LinkButton/LinkButton";
-import { useNavigate } from "react-router-dom";
 import { selectToken } from "../userSlice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { appointmentId } from "../appointmentSlice";
+import { PaginationButton } from "../../common/PaginationButton/PaginationButton"
 
 export const Appointments = () => {
-
   const rdxToken = useSelector(selectToken);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [appointments, setAppointments] = useState([])
-  const [loop, setloop] = useState(false)
+  const [appointments, setAppointments] = useState([]);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     if (rdxToken) {
-      appointmentsUsers(rdxToken)
-        .then(response => {
-          if (loop == false) {
-            setAppointments(response.data.data);
-            setloop(true)
+      const pageString = page.toString();
+      appointmentsUsers(rdxToken, pageString)
+        .then((response) => {
+          if (Array.isArray(response.data.data)) {
+            setTimeout(() => {
+              setAppointments(response.data.data);
+            }, 200);
+          } else {
+            setPage(page - 1);
           }
         })
-        .catch(error => console.log(error));
+        .catch((error) => console.log(error));
     } else {
       navigate("/");
     }
-  }, [appointments]);
+  }, [page]);
 
   const rdxIdAppointment = (argumento) => {
-    dispatch(appointmentId(argumento))
-  }
+    dispatch(appointmentId(argumento));
+  };
 
   const removeAppointments = (appointmentId, token) => {
     removeAppointment(appointmentId, token)
-      .then(response => {
+      .then((response) => {
         console.log(response.data.message);
-        setAppointments(prevAppointments => prevAppointments.filter(appointment => appointment.id !== appointmentId));
+        setAppointments((prevAppointments) =>
+          prevAppointments.filter(
+            (appointment) => appointment.id !== appointmentId
+          )
+        );
       })
-      .catch(error => console.log(error));
+      .catch((error) => console.log(error));
   };
-  
-  console.log(appointments);
+
+  const changePageUp = () => {
+    setPage(page + 1);
+  };
+
+  const changePageDown = () => {
+    if (page !== 0) {
+      setPage(page - 1);
+    }
+  };
+
   return (
     <div className="cards-appointment-body">
-      {
-        appointments
-          ? (
-            <div className="cards-appointment-container">
-              <div>
-                <LinkButton
-                  classButton={"link-button-style"}
-                  path={"/create-appointment"}
-                  title={"CreateAppointment"}
-                />
-                {
-                  appointments.map((appointment) => (
-
-                    <CardAppointment
-                      key={appointment.id}
-                      appointmentId={appointment.id}
-                      date={appointment.date}
-                      category={appointment.category}
-                      nameProduct={appointment.name}
-                      imageProduct={appointment.image}
-                      email={appointment.email}
-                      artist_name={appointment.full_name}
-                      shift={appointment.shift}
-                      price={appointment.price}
-                      emit={() => rdxIdAppointment(appointment.id)}
-                      remove={() => removeAppointments(appointment.id, rdxToken)}
-                    />
-                  ))
-                }
-              </div>
-            </div>
-          ) : (
-            <div>Loading...</div>
-          )}
+      <PaginationButton
+        classPagination={"next"}
+        text={"Next"}
+        changePagination={() => changePageUp()}
+      />
+      <PaginationButton
+        classPagination={"previus"}
+        text={"Previus"}
+        changePagination={() => changePageDown()}
+      />
+      {appointments ? (
+        <div className="cards-appointment-container">
+          <div>
+            <LinkButton
+              classButton={"link-button-style"}
+              path={"/create-appointment"}
+              title={"CreateAppointment"}
+            />
+            {appointments.map((appointment) => (
+              <CardAppointment
+                key={appointment.id}
+                appointmentId={appointment.id}
+                date={appointment.date}
+                category={appointment.category}
+                nameProduct={appointment.name}
+                imageProduct={appointment.image}
+                email={appointment.email}
+                artist_name={appointment.full_name}
+                shift={appointment.shift}
+                price={appointment.price}
+                emit={() => rdxIdAppointment(appointment.id)}
+                remove={() => removeAppointments(appointment.id, rdxToken)}
+              />
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div>Loading...</div>
+      )}
     </div>
   );
-}
+};

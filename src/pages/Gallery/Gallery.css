@@ -1,12 +1,27 @@
 .gallery{
     height: 84vh;
     width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 
 .loginStyle{
     background-color: black;
 }
+
+/* @media only screen and (max-width: 990px) {
+    html {
+      font-size: 0.7em;
+    }
+  }
+  
+  @media only screen and (max-width: 750px) {
+    html {
+      font-size: 0.5em;
+    }
+  }
+  
+  @media only screen and (max-width: 680px) {
+    .cards-services-body {
+      font-size: 1.3em;
+    }
+  } */

@@ -10,11 +10,12 @@ export const registerUser = async (body) => {
   return await axios.post(`${BASE_URL}register`, body);
 }
 
-export const getArtists = async () => {
-  return await axios.get(`${BASE_URL}artists`);
+export const getArtists = async (page) => {
+  return await axios.get(`${BASE_URL}artists?page=${page}&pageSize=4`);
 }
-export const getServices = async () => {
-  return await axios.get(`${BASE_URL}services`);
+
+export const getServices = async (page) => {
+  return await axios.get(`${BASE_URL}services?page=${page}&pageSize=8`);
 }
 
 export const getProfile = (rdxToken) => {
@@ -33,8 +34,8 @@ export const updateProfile = (body, rdxToken) => {
   });
 };
 
-export const appointmentsUsers = (rdxToken) => {
-  return axios.get(`${BASE_URL}appointments/get-all-my-appointments?page=1&skip=10`, {
+export const appointmentsUsers = (rdxToken, page) => {
+  return axios.get(`${BASE_URL}appointments/get-all-my-appointments?page=${page}&pageSize=8`, {
     headers: {
       Authorization: `Bearer ${rdxToken}`,
     },

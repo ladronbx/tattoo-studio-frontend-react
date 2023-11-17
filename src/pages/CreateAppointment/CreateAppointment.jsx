@@ -6,7 +6,6 @@ import { createAppointment, getArtists, getServices } from "../../services/apiCa
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import ShiftToggle from "../../common/ShiftToggle/ShiftToggle";
 
-//Rdx lectura
 import { useSelector } from "react-redux";
 import { selectToken } from "../userSlice";
 
@@ -28,15 +27,9 @@ export const CreateAppointment = () => {
         idError: ""
     });
 
-    // useEffect(() => {
-    //     if (!rdxToken) {
-    //         navigate("/");
-    //     }
-    // }, []);
-
     const [message, setMessage] = useState("");
     const [gallery, setgallery] = useState("");
-    const [artists, setartists] = useState([])
+    const [artists, setArtists] = useState([])
 
     const functionHandler = (e) => {
         setdataAppointments((prevState) => ({
@@ -51,7 +44,7 @@ export const CreateAppointment = () => {
             getArtists()
                 .then(
                     response => {
-                        setartists(response.data.data)
+                        setArtists(response.data.data)
                     }
                 )
                 .catch(error => console.log(error))
@@ -152,7 +145,7 @@ export const CreateAppointment = () => {
                 {
                     gallery.length > 0 &&
 
-                    <select className = "gallery-select" name="id" onChange={functionHandler}>
+                    <select className="gallery-select" name="id" onChange={functionHandler}>
                         <option>Select a service</option>
                         {
                             gallery.map(

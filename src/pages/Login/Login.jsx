@@ -1,23 +1,29 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from 'react-redux';
 import "./Login.css";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { logUser } from "../../services/apiCalls";
-import { login, userData } from "../userSlice";
 import { checker } from "../../services/checker";
 import { useNavigate } from 'react-router-dom';
+
+//Rdx escritura
+import { useDispatch } from "react-redux";
+import { login} from "../userSlice";
+
+//Rdx
+import { useSelector } from "react-redux";
+import { selectToken } from "../userSlice";
 
 export const Login = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const rdxUserData = useSelector(selectToken);
 
-    const rdxUserData = useSelector(userData);
-    //no termina de funcionar
+
     useEffect(() => {
-        if (rdxUserData.credentials.token) {
-            navigate("/")
+        if (rdxUserData) {
+            navigate("/");
         }
-    }, [rdxUserData])
+    }, []);
 
     const [credentials, setCredentials] = useState({
         email: "",

@@ -2,51 +2,78 @@ import React, { useState, useEffect } from "react"
 import "./Gallery.css"
 import { getServices } from "../../services/apiCalls"
 import { CardService } from "../../common/CardService/CardService"
+import { PaginationButton } from "../../common/PaginationButton/PaginationButton"
+import { useNavigate } from "react-router-dom"
 
 export const Gallery = () => {
-
-    const [services, setservices] = useState([])
-    const [loop, setloop] = useState(false)
+    const navigate = useNavigate();
+    const [services, setServices] = useState([])
+    const [page, setPage] = useState(1)
 
     useEffect(() => {
-        if (services.length === 0) {
-
-            getServices()
-                .then(services => {
-                    if(loop == false){
-                        setservices(services.data.data)
-                        setloop(true)             
+        if (services || services.length == 0) {
+            const pageString = page.toString();
+            getServices(pageString)
+                .then((response) => {
+                    if (Array.isArray(response.data.data)) {
+                        setTimeout(() => {
+                            setServices(response.data.data);
+                        }, 200);
+                    } else {
+                        setPage(page - 1);
                     }
-
                 })
-                .catch(error => console.log(error))
+                .catch((error) => console.log(error));
+        } else {
+            navigate("/");
         }
-    }, [services])
+    }, [page]);
+
+    const changePageUp = () => {
+        setPage(page + 1)
+    }
+
+    const changePageDown = () => {
+        if (page != 0) {
+            setPage(page - 1)
+        }
+    }
 
     return (
         <div className="cards-services-body">
+
+            <PaginationButton
+                classPagination={"next"}
+                text={"Next"}
+                changePagination={() => changePageUp()}
+            />
+            <PaginationButton
+                classPagination={"previus"}
+                text={"Previus"}
+                changePagination={() => changePageDown()}
+            />
             {
-             
+
                 services.length > 0
                     ? (
                         <div>
                             {
                                 services.map((service) => {
                                     return <CardService
-                                    key={service.id}
-                                    image={service.image}
-                                    name={service.name}
-                                    category={service.category}
-                                    price={service.price}
-                                />
-                                    
+                                        key={service.id}
+                                        image={service.image}
+                                        name={service.name}
+                                        category={service.category}
+                                        price={service.price}
+                                    />
+
                                 })
                             }
                         </div>)
 
                     : (<div> Loading ... </div>)
             }
-       
-    </div>
+
+        </div>
     )
 }
