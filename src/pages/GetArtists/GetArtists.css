@@ -3,21 +3,3 @@
     flex-wrap: wrap;
     justify-content: space-between;
   }
-  @media screen and (max-width: 1200px) {
-    .card {
-      width: calc(50% - 1em);
-    }
-  }
-  
-  @media screen and (max-width: 768px) {
-    .card {
-      width: calc(50% - 1em);
-    }
-  }
-  
-  @media screen and (max-width: 480px) {
-    .card {
-      width: calc(100% - 1em);
-    }
-  }
-  

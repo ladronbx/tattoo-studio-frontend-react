@@ -1,15 +1,8 @@
-.homeStyle{
+.home-style {
     height: 84vh;
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.tokenStyle{
-    color: red;
-}
-
-.loginStyle{
-    background-color: black;
+    background-image: url('../../assets/home.jpg');
 }
