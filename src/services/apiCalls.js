@@ -11,7 +11,7 @@ export const registerUser = async (body) => {
 }
 
 export const getArtists = async (page) => {
-  return await axios.get(`${BASE_URL}artists?page=${page}&pageSize=4`);
+  return await axios.get(`${BASE_URL}artists?page=${page}&pageSize=6`);
 }
 
 export const getServices = async (page) => {

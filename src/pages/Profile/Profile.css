@@ -17,9 +17,11 @@
 }
 
 .container-left-img-profile img{
+  width: 100%;
 }
 
 .user-card-right-profile{
+  width: 100%;
 }
 
 .full-name-profile{

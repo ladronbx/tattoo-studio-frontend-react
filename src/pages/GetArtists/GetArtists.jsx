@@ -41,25 +41,23 @@ export const GetArtists = () => {
 
   return (
     <div className="cards-artists-container-main">
-      <div className="row pagination-container">
-        <div className="pagination">
-          <PaginationButton
-            classPagination={"previous"}
-            text={"Previous"}
-            changePagination={() => changePageDown()}
-          />
-          <PaginationButton
-            classPagination={"next"}
-            text={"Next"}
-            changePagination={() => changePageUp()}
-          />
-        </div>
+      <div className="pagination-container">
+        <PaginationButton
+          classPagination="previous-artist"
+          text={"Previous"}
+          changePagination={() => changePageDown()}
+        />
+        <PaginationButton
+          classPagination="next-artist "
+          text={"Next"}
+          changePagination={() => changePageUp()}
+        />
       </div>
 
-      <div className="row row-cols-xl-4 row-cols-md-2 row-cols-sm-1">
+      <div className="row row-cols-xl-3 row-cols-md-2 row-cols-sm-1 col-card-artist">
         {artists.length > 0 ? (
           artists.map((artist) => (
-            <div key={artist.id} className="col mb-4">
+            <div className="col mb-3 ">
               <CardArtist
                 full_name={artist.full_name}
                 photo={artist.photo}
@@ -73,5 +71,6 @@ export const GetArtists = () => {
         )}
       </div>
     </div>
+
   );
 };
