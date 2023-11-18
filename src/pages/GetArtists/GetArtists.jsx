@@ -55,20 +55,26 @@ export const GetArtists = () => {
       </div>
 
       <div className="row row-cols-xl-3 row-cols-md-2 row-cols-sm-1 col-card-artist">
-        {artists.length > 0 ? (
-          artists.map((artist) => (
-            <div className="col mb-3 ">
-              <CardArtist
-                full_name={artist.full_name}
-                photo={artist.photo}
-                email={artist.email}
-                phone_number={artist.phone_number}
-              />
-            </div>
-          ))
-        ) : (
-          <div>Loading ...</div>
-        )}
+        {
+          artists.length > 0
+            ? (
+              artists.map((artist) => (
+                <div className="col mb-3 ">
+                  <CardArtist
+
+                    full_name={artist.full_name}
+                    photo={artist.photo}
+                    email={artist.email}
+                    phone_number={artist.phone_number}
+                  />
+                </div>
+              ))
+            )
+
+            : (
+              <div>Loading ...</div>
+            )
+        }
       </div>
     </div>
 

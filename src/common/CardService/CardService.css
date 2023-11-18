@@ -7,8 +7,8 @@
   }
   .card-service {
     position: relative;
-    width: 7em;
     height: 25em;
+    width: 17em;
     overflow: hidden;
     border-radius: 0.5em;
     box-shadow: 0 0.1em 0.1em rgba(152, 39, 39, 0.725);
