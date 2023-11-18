@@ -1,6 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html {
   /* max-width: 1280px; */
-  /* overflow-x: hidden; */
+  /* overflow-x: hidden;
+  overflow-y: hidden; */
+  font-family: 'Great Vibes', cursive;
+  font-size: 20px;
   margin: 0;
   padding: 0;
   text-align: center;

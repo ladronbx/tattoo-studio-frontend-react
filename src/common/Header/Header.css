@@ -1,17 +1,28 @@
-.header-style{
+.header-style {
     color: aliceblue;
-    margin: 0;
-    display: flex;
-    margin: 1em;
-    justify-content: center;
-    align-items: center;
-    height: 16vh;
+    position: relative;
+    top: 0;
+    left: 0;
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 11vh;
     padding: 0.1em;
-    background-color: rgb(9, 9, 37);
-    
+    background-color: rgb(0, 0, 0);
 }
 
-.link-button-style{
-    padding: 1em
+.link-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.link-button-style {
+    padding: 1em;
+    margin-right: 2em;
+}
+
+.logo-image img {
+    margin: 0;
+    height: 11vh;
 }
