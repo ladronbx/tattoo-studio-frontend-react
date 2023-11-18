@@ -11,6 +11,7 @@ export const Header = () => {
     const dispatch = useDispatch();
     const rdxToken = useSelector(selectToken);
     const [decodedToken, setDecodedToken] = useState(null);
+    const [menuOpened, setMenuOpened] = useState(false);
 
     useEffect(() => {
         if (rdxToken) {
@@ -30,52 +31,68 @@ export const Header = () => {
         Navigate("/");
     };
 
+    const toggleMenu = () => {
+        setMenuOpened(!menuOpened);
+    };
+
     return (
-        <div className="header-style">
-            <LinkButton
-                classButton={"link-button-style"}
-                path={"/"}
-                title={
-                    <div className="logo-image">
-                        <img src={logoImage} alt="Logo" />
+        <div className="navbar-header-style">
+
+            <div className="logo-container-header">
+
+                <LinkButton
+                    classButton={"link-button-logo-style"}
+                    path={"/"}
+                    title={
+                        <div className="logo-image">
+                            <img src={logoImage} alt="Logo" />
+                        </div>
+                    }
+                />
+            </div>
+
+            <div className="navbar-container-header">
+
+                <div className={`header-style ${menuOpened ? 'menu-opened' : ''}`}>
+                    <div className="burger-icon" onClick={toggleMenu}>
+                        <div className="bar"></div>
+                        <div className="bar"></div>
+                        <div className="bar"></div>
                     </div>
-                }
-            />
 
-            <div className="link-buttons">
 
-                <LinkButton classButton={"link-button-style"} path={"/"} title={"Home"} />
-                <LinkButton classButton={"link-button-style"} path={"/artists"} title={"Artists"} />
-                <LinkButton classButton={"link-button-style"} path={"/gallery"} title={"Gallery"} />
 
-                {rdxToken ? (
-                    <>
-                        <LinkButton classButton={"link-button-style"} path={"/profile"} title={"Profile"} />
-                        <LinkButton classButton={"link-button-style"} path={"/appointments"} title={"Appointments"} />
-                        <LinkButton classButton={"link-button-style"} path={"/update"} title={"Update Profile"} />
+                    <div className={`link-buttons ${menuOpened ? 'menu-links' : ''}`}>
+                        <LinkButton classButton={"link-button-style"} path={"/"} title={"Home"} />
+                        <LinkButton classButton={"link-button-style"} path={"/artists"} title={"Artists"} />
+                        <LinkButton classButton={"link-button-style"} path={"/gallery"} title={"Gallery"} />
 
-                        {decodedToken && decodedToken.role === "super_admin" && (
+                        {rdxToken ? (
                             <>
-                                <LinkButton classButton={"link-button-style"} path={"/get-all-users"} title={"Get all Users"} />
-                                <LinkButton classButton={"link-button-style"} path={"/get-all-appointments"} title={"Get all Appointments"} />
+                                <LinkButton classButton={"link-button-style"} path={"/profile"} title={"Profile"} />
+                                <LinkButton classButton={"link-button-style"} path={"/appointments"} title={"Appointments"} />
+                                <LinkButton classButton={"link-button-style"} path={"/update"} title={"Update Profile"} />
+
+                                {decodedToken && decodedToken.role === "super_admin" && (
+                                    <>
+                                        <LinkButton classButton={"link-button-style"} path={"/get-all-users"} title={"Get all Users"} />
+                                        <LinkButton classButton={"link-button-style"} path={"/get-all-appointments"} title={"Get all Appointments"} />
+                                    </>
+                                )}
+
+                                <div onClick={logOutMe}>
+                                    <LinkButton classButton={"link-button-style"} path={"/"} title={"Log Out"} />
+                                </div>
+                            </>
+                        ) : (
+                            <>
+                                <LinkButton classButton={"link-button-style"} path={"/login"} title={"Login"} />
+                                <LinkButton classButton={"link-button-style"} path={"/register"} title={"Register"} />
                             </>
                         )}
-
-                        <div onClick={logOutMe}>
-                            <LinkButton classButton={"link-button-style"} path={"/"} title={"Log Out"} />
-                        </div>
-
-                    </>
-                )
-
-                    : (
-                        <>
-                            <LinkButton classButton={"link-button-style"} path={"/login"} title={"Login"} />
-                            <LinkButton classButton={"link-button-style"} path={"/register"} title={"Register"} />
-                        </>
-                    )}
+                    </div>
+                </div>
             </div>
         </div>
     );
 };
-
