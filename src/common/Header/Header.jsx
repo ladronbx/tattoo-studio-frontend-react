@@ -55,9 +55,11 @@ export const Header = () => {
 
                 <div className={`header-style ${menuOpened ? 'menu-opened' : ''}`}>
                     <div className="burger-icon" onClick={toggleMenu}>
-                        <div className="bar"></div>
-                        <div className="bar"></div>
-                        <div className="bar"></div>
+                        <div className="menu-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
                     </div>
 
 
