@@ -5,8 +5,8 @@
     perspective: 50em;
     transition: all 5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     background-color: #000000;
-    width: calc(33.33% - 1em);
-    margin-bottom: 1em;
+    width: 99%;
+    margin: 0em;
     cursor: pointer;
   }
   
@@ -43,13 +43,12 @@
   .card-artist-title {
     margin: 0;
     font-size: 3em;
-    color: #ffffff;
-    font-weight: 700;
+    color: #ffffff
   }
   
   .card-artist-description {
-    margin: 0.6em 0 0;
-    font-size: 1;
+    margin: 1em 0 0;
+    font-size: 1em;
     color: #ffffff;
     line-height: 1.4;
   }
