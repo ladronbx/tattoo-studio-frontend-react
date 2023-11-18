@@ -37,19 +37,21 @@ export const Profile = () => {
         <div className="container-main-profile">
             {user ? (
                 <div className="container-profile mt-5">
-                    <img src={user.photo} alt="User"/>
-                    <div className="user-card-profile p-4">
-                        <div className="full-name-profile">{user.full_name}</div>
-                        <div className="email-name-profile">Email</div>
-                        <div className="email-profile">{user.email}</div>
-                        <div className="phone-name-profile">Phone number</div>
-                        <div className="phone-profile">{user.phone_number}</div>
-                        <div className="button-update">
-                            <LinkButton
-                                className="btn btn-primary"
-                                path={"/update"}
-                                title={"Update my profile"}
-                            />
+                    <div className="d-flex flex-column align-items-center">
+                        <div className="container-left-img-profile"><img src={user.photo} alt="User" className="mb-3" /></div>
+                        <div className="user-card-right-profile p-4">
+                            <div className="full-name-profile">{user.full_name}</div>
+                            <div className="email-name-profile">Email</div>
+                            <div className="email-profile">{user.email}</div>
+                            <div className="phone-name-profile">Phone number</div>
+                            <div className="phone-profile">{user.phone_number}</div>
+                            <div className="button-update">
+                                <LinkButton
+                                    className="btn btn-primary"
+                                    path={"/update"}
+                                    title={"Update my profile"}
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
