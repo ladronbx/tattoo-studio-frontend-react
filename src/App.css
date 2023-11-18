@@ -18,9 +18,21 @@ html {
   text-align: center;
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-direction: column;
-  background-color: black;
+  background-color: rgb(29, 79, 79);
+  flex-wrap: wrap;
+}
+
+#root{
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgb(29, 79, 79);
+  flex-wrap: wrap;
 }
 
 @media only screen and (max-width: 990px) {
