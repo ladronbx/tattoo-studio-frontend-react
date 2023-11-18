@@ -44,8 +44,8 @@ export const GetArtists = () => {
       <div className="row pagination-container">
         <div className="pagination">
           <PaginationButton
-            classPagination={"previus"}
-            text={"Previus"}
+            classPagination={"previous"}
+            text={"Previous"}
             changePagination={() => changePageDown()}
           />
           <PaginationButton

@@ -40,27 +40,31 @@ export const Gallery = () => {
     }
 
     return (
-        <div className="cards-services-body">
-
+        <div className="cards-artists-container-main">
+        <div className="row pagination-container">
+          <div className="pagination">
             <PaginationButton
-                classPagination={"next"}
-                text={"Next"}
-                changePagination={() => changePageUp()}
+              classPagination={"previous"}
+              text={"Previous"}
+              changePagination={() => changePageDown()}
             />
             <PaginationButton
-                classPagination={"previus"}
-                text={"Previus"}
-                changePagination={() => changePageDown()}
+              classPagination={"next"}
+              text={"Next"}
+              changePagination={() => changePageUp()}
             />
+          </div>
+        </div>
+  
             {
 
                 services.length > 0
                     ? (
-                        <div>
-                            {
+                        <div className="row row-cols-xl-4 row-cols-md-2 row-cols-sm-1">
+                            { 
                                 services.map((service) => {
                                     return <CardService
-                                        key={service.id}
+                                        key={service.id} className="col mb-4"
                                         image={service.image}
                                         name={service.name}
                                         category={service.category}

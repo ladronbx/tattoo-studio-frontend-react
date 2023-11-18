@@ -57,8 +57,8 @@ export const GetAllUsers = () => {
                 changePagination={()=>changePageUp()}
             />
             <PaginationButton 
-                classPagination={"previus"}
-                text={"Previus"}
+                classPagination={"previous"}
+                text={"Previous"}
                 changePagination={()=>changePageDown()}
             />
         

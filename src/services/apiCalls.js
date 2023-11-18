@@ -15,7 +15,7 @@ export const getArtists = async (page) => {
 }
 
 export const getServices = async (page) => {
-  return await axios.get(`${BASE_URL}services?page=${page}&pageSize=8`);
+  return await axios.get(`${BASE_URL}services?page=${page}&pageSize=9`);
 }
 
 export const getProfile = (rdxToken) => {

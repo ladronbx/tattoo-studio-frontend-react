@@ -7,18 +7,18 @@
   }
   .card-service {
     position: relative;
-    width: 25em;
+    width: 7em;
     height: 25em;
     overflow: hidden;
     border-radius: 0.5em;
-    box-shadow: 0 0.25em 0.5em rgba(255, 0, 0, 0.725);
+    box-shadow: 0 0.1em 0.1em rgba(152, 39, 39, 0.725);
     transition: box-shadow 0.3s ease-in-out;
     margin: 2em;
     cursor: pointer;
   }
   
   .card-service:hover {
-    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.386);
   }
   
   .card-service-image {
@@ -33,6 +33,9 @@
   }
   
   .card-service-content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     position: absolute;
     bottom: 0;
     left: 0;
