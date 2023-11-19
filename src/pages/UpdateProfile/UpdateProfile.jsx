@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react"
-import "./UpdateProfile.css"
+import React, { useState, useEffect } from "react";
+import "./UpdateProfile.css";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { updateProfile } from "../../services/apiCalls";
 import { useNavigate } from 'react-router-dom';
 import { checker } from "../../services/checker";
 
 export const UpdateProfile = () => {
-
   const navigate = useNavigate();
 
   const [credentials, setCredentials] = useState({
@@ -21,7 +20,7 @@ export const UpdateProfile = () => {
     passwordError: "",
     phone_numberError: "",
     photoError: ""
-  })
+  });
 
   const [message, setMessage] = useState("");
 
@@ -72,8 +71,9 @@ export const UpdateProfile = () => {
   };
 
   return (
-    <div className="register-body">
-      <div className="input-card">
+    <div className="update-style-container-main">
+      <div className="update-style-container">
+        <h2 className="title-update">Update Profile</h2>
         <CustomInput
           design={"inputStyle"}
           type={"name"}
@@ -114,10 +114,9 @@ export const UpdateProfile = () => {
         />
         <div className='error-style'>{credentialsError.photoError}</div>
 
-        <div className='button-submit' onClick={Update}>Update</div>
+        <div className='buttonupdate' onClick={Update}>Update</div>
         <p>{message}</p>
       </div>
     </div>
-
   );
 };
