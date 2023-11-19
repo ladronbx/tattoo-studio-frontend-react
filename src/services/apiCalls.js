@@ -18,6 +18,13 @@ export const getServices = async (page) => {
   return await axios.get(`${BASE_URL}services?page=${page}&pageSize=9`);
 }
 
+export const getAllArtists = async () => {
+  return await axios.get(`${BASE_URL}all-artists`);
+}
+export const getGallery = async () => {
+  return await axios.get(`${BASE_URL}gallery?page=1&pageSize=30`);
+}
+
 export const getProfile = (rdxToken) => {
   return axios.get(`${BASE_URL}profile`, {
     headers: {

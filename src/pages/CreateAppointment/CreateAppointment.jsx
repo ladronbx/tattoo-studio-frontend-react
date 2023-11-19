@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import "./CreateAppointment.css"
 import { useNavigate } from "react-router-dom";
 import { checker } from "../../services/checker";
-import { createAppointment, getArtists, getServices } from "../../services/apiCalls";
+import { createAppointment, getAllArtists, getGallery } from "../../services/apiCalls";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import ShiftToggle from "../../common/ShiftToggle/ShiftToggle";
 
@@ -41,7 +41,7 @@ export const CreateAppointment = () => {
     useEffect(() => {
 
         if (artists.length === 0) {
-            getArtists()
+            getAllArtists()
                 .then(
                     response => {
                         setArtists(response.data.data)
@@ -56,7 +56,7 @@ export const CreateAppointment = () => {
     useEffect(() => {
 
         if (gallery.length === 0) {
-            getServices()
+            getGallery()
                 .then(
                     response => {
                         setgallery(response.data.data)
@@ -145,13 +145,13 @@ export const CreateAppointment = () => {
                 {
                     gallery.length > 0 &&
 
-                    <select className="gallery-select" name="id" onChange={functionHandler}>
+                    <select className="gallery-select" name="name" onChange={functionHandler}>
                         <option>Select a service</option>
                         {
                             gallery.map(
                                 service => {
                                     return (
-                                        <option key={service.id} value={service.id}>{service.name}</option>
+                                        <option key={service.id} value={service.name}>{service.name}</option>
                                     )
                                 }
                             )
