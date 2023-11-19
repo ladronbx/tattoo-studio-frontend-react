@@ -65,25 +65,35 @@ export const Appointments = () => {
   };
 
   return (
-    <div className="cards-appointment-body">
-      <div className="pagination-container">
-        <PaginationButton
-          classPagination="previous-artist"
-          text={"Previous"}
-          changePagination={() => changePageDown()}
-        />
-        <div className='create-appointment-button'>
-        <LinkButton
-          classButton={"link-button-style"}
-          path={"/create-appointment"}
-          title={"CreateAppointment"}
-        />
+    <div className="cards-appointment-container-main">
+
+      <div className="pagination-container row">
+        <div className="col">
+          <PaginationButton
+            classPagination="previous-artist"
+            text={"Previous"}
+            changePagination={() => changePageDown()}
+          />
+
         </div>
-        <PaginationButton
-          classPagination="next-artist"
-          text={"Next"}
-          changePagination={() => changePageUp()}
-        />
+
+        <div className='create-appointment-button-green col'>
+          <LinkButton
+            classButton={""}
+            path={"/create-appointment"}
+            title={"CreateAppointment"}
+          />
+        </div>
+
+        <div className="col">
+
+          <PaginationButton
+            classPagination="next-artist "
+            text={"Next"}
+            changePagination={() => changePageUp()}
+          />
+        </div>
+
       </div>
       {
         appointments
@@ -91,7 +101,7 @@ export const Appointments = () => {
 
           ? (
             <div className="cards-appointment-container">
-              <div>
+              <div >
 
                 {appointments.map((appointment) => (
                   <CardAppointment

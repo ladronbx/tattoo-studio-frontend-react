@@ -74,61 +74,60 @@ export const GetAllAppointments = () => {
 
   return (
 
-    <div className="appointments-body">
+    <div className="cards-appointment-container-main">
 
-      <PaginationButton
-        classPagination={"next"}
-        text={"Next"}
-        changePagination={() => changePageUp()}
-      />
-      <PaginationButton
-        classPagination={"previous"}
-        text={"Previous"}
-        changePagination={() => changePageDown()}
-      />
-
+      <div className="pagination-container">
+        <PaginationButton
+          classPagination="previous-artist"
+          text={"Previous"}
+          changePagination={() => changePageDown()}
+        />
+        <PaginationButton
+          classPagination="next-artist "
+          text={"Next"}
+          changePagination={() => changePageUp()}
+        />
+      </div>
       {
         appointments.length > 0
-          ? (<div className='appointments-Roster'>
-            <div className="create-button">
-              <LinkButton
-                classButton={"createAppointment"}
-                path={"/createAppointment"}
-                title={"Create Appointment"} />
-            </div>
-            <div>
-              {
-                appointments.map(appointment => {
-                  // if (appointment.status) {
-                  //   appointment.status = "pending"
-                  // } else if (!appointment.status) {
-                  //   appointment.status = "done"
-                  // }
-                  return (
-                    <CardAppointment
-                      key={appointment.id}
-                      appointmentId={appointment.id}
-                      nameProduct={appointment.name}
-                      imageProduct={appointment.image}
-                      service={appointment.category}
-                      email={appointment.email}
-                      artist_name={appointment.artist_name}
-                      client_name={appointment.user_name}
-                      user_email={appointment.user_email}
-                      artist={appointment.full_name}
-                      date={appointment.date}
-                      status={appointment.status}
-                      shift={appointment.shift}
-                      price={appointment.price}
-                      emit={() => rdxIdAppointment(appointment.id)}
-                      remove={() => removeAppointments(appointment.id, rdxToken)}
+          ? (
 
-                    />
-                  )
-                }
-                )}
+            <div className="cards-appointment-container">
+              <div>
+
+                {
+                  appointments.map(appointment => {
+                    // if (appointment.status) {
+                    //   appointment.status = "pending"
+                    // } else if (!appointment.status) {
+                    //   appointment.status = "done"
+                    // }
+                    return (
+                      <CardAppointment
+                        key={appointment.id}
+                        appointmentId={appointment.id}
+                        nameProduct={appointment.name}
+                        imageProduct={appointment.image}
+                        service={appointment.category}
+                        email={appointment.email}
+                        artist_name={appointment.artist_name}
+                        client_name={appointment.user_name}
+                        user_email={appointment.user_email}
+                        artist={appointment.full_name}
+                        date={appointment.date}
+                        status={appointment.status}
+                        shift={appointment.shift}
+                        price={appointment.price}
+                        emit={() => rdxIdAppointment(appointment.id)}
+                        remove={() => removeAppointments(appointment.id, rdxToken)}
+
+                      />
+                    )
+                  }
+                  )}
+              </div>
+
             </div>
-          </div>
           )
           : (
             <div>Loading...</div>

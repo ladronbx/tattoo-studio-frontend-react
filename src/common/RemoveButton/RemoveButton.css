@@ -4,7 +4,7 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-    background: #e62222;
+    background: #7a1717;
     border: none;
     border-radius: 5px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
@@ -19,11 +19,12 @@
     transform: translateX(35px);
     color: white;
     font-weight: bold;
+    font-size: 1.1em;
 }
 
 .common-remove-icon {
     position: absolute;
-    border-left: 1px solid #c41b1b;
+    border-left: 1px solid #3e0606da;
     transform: translateX(110px);
     height: 40px;
     width: 40px;
@@ -38,7 +39,7 @@
 }
 
 .common-remove-button:hover {
-    background: #ff3636;
+    background: #9e5b5b;
 }
 
 .common-remove-button:hover .common-remove-text {

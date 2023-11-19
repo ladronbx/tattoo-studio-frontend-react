@@ -35,15 +35,6 @@ export const CardAppointment = ({ appointmentId, nameProduct, imageProduct, cate
             {!collapsed && (
                 <div className="card-appointment-details row">
 
-                    <div className="card-appointment-buttons row">
-                        <div className="col">
-                        <EditButton path={"/update-appointment"}/>
-                        </div>
-                        <div className="col ">
-                            <div className="remove-button"><RemoveButton remove={() => remove()} /></div>
-                        </div>
-                    </div>
-
                     <div className="row">
                         <div className="col">
                             <div className="nameProduct">{nameProduct}</div>
@@ -52,16 +43,28 @@ export const CardAppointment = ({ appointmentId, nameProduct, imageProduct, cate
                             </div>
                         </div>
                     </div>
-                    <div className="row">
+                    <div className="row price-email-card-appointment">
                         <div className="col">
                             <div className="price-container">
                                 <div className="price">{price}€</div>
                             </div>
                             <div className="tattoo-artist-email-container">
-                                <div className="email">Artist email :{email}</div>
+                                <div className="email-artist-card-appointment">Artist email :{email}</div>
                             </div>
                         </div>
                     </div>
+
+                    <div className="card-appointment-buttons row justify-content-between">
+                        <div className="col">
+                            <EditButton path={"/update-appointment"} />
+                        </div>
+                        <div className="col">
+                            <div className="remove-button">
+                                <RemoveButton remove={() => remove()} />
+                            </div>
+                        </div>
+                    </div>
+
 
                 </div>
             )}
