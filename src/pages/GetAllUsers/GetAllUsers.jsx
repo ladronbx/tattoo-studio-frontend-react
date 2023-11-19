@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./GetAllUsers.css";
 import { getAllUsers } from "../../services/apiCalls";
-import { CardUser } from "../../common/CardUser/CardUser";
 import { useSelector } from "react-redux";
 import { selectToken } from "../userSlice";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { PaginationButton } from "../../common/PaginationButton/PaginationButton";
+import CardAllUsers from "../../common/CardAllUsers/CardAllUsers";
 
 export const GetAllUsers = () => {
   const rdxToken = useSelector(selectToken);
@@ -51,23 +51,23 @@ export const GetAllUsers = () => {
   return (
 
     <div className="cards-users-body">
-            <PaginationButton
-                classPagination={"next"}
-                text={"Next"}
-                changePagination={()=>changePageUp()}
-            />
-            <PaginationButton 
-                classPagination={"previous"}
-                text={"Previous"}
-                changePagination={()=>changePageDown()}
-            />
-        
+      <PaginationButton
+        classPagination={"next"}
+        text={"Next"}
+        changePagination={() => changePageUp()}
+      />
+      <PaginationButton
+        classPagination={"previous"}
+        text={"Previous"}
+        changePagination={() => changePageDown()}
+      />
+
       {
         users.length > 0
           ? (
             <div>
               {users.map((user) => (
-                <CardUser
+                <CardAllUsers
                   key={user.id}
                   full_name={user.full_name}
                   photo={user.photo}
