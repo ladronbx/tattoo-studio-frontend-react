@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
-import "./UpdateProfile.css";
+import "./UpdateProfile.css"
+import { useNavigate } from "react-router-dom";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
-import { updateProfile } from "../../services/apiCalls";
-import { useNavigate } from 'react-router-dom';
 import { checker } from "../../services/checker";
+import { updateProfile } from "../../services/apiCalls";
+
+//Rdx
+import { useSelector } from "react-redux";
+import { selectToken } from "../userSlice";
 
 export const UpdateProfile = () => {
+
+  const rdxToken = useSelector(selectToken);
   const navigate = useNavigate();
 
   const [credentials, setCredentials] = useState({
@@ -22,6 +28,12 @@ export const UpdateProfile = () => {
     photoError: ""
   });
 
+  useEffect(() => {
+    if (!rdxToken) {
+      navigate("/");
+    }
+  }, []);
+
   const [message, setMessage] = useState("");
 
   const functionHandler = (e) => {
@@ -32,6 +44,7 @@ export const UpdateProfile = () => {
   };
 
   const errorCheck = (e) => {
+
     let error = "";
     error = checker(e.target.name, e.target.value);
 
@@ -39,21 +52,20 @@ export const UpdateProfile = () => {
       ...prevState,
       [e.target.name + 'Error']: error,
     }));
-  };
+  }
+
+  const photoDefault = (photo) => (photo === "" ? undefined : photo);
 
   const Update = () => {
-    if (
-      credentials.full_name !== "" &&
-      credentials.password !== "" &&
-      credentials.phone_number !== ""
-    ) {
+    if (credentials.full_name != "" &&
+      credentials.password != "" &&
+      credentials.phone_number != "") {
       const credentialsWithNumber = {
         ...credentials,
         phone_number: parseInt(credentials.phone_number, 10),
-        photo: photoDefault(credentials.photo),
+        photo: photoDefault(credentials.photo)
       };
-      const token = localStorage.getItem("token");
-      updateProfile(credentialsWithNumber, token)
+      updateProfile(credentialsWithNumber, rdxToken)
         .then((response) => {
           console.log(response.data);
           const { message, error } = response.data;
@@ -61,10 +73,10 @@ export const UpdateProfile = () => {
           if (!error) {
             setTimeout(() => {
               navigate("/profile");
-            }, 2000);
+            }, 1000)
           }
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     }
