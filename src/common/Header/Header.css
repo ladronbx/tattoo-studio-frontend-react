@@ -55,9 +55,7 @@
 }
 
 .link-button-style {
-    font-size: 1em;
-    padding: 1em;
-    margin-right: 2em;
+    padding: 0em 0em 0em 0.9em;
     color: white;
     text-decoration: none;
     cursor: pointer;

@@ -36,7 +36,7 @@ export const Profile = () => {
             {
                 user
                     ? (
-                        <div className="container-profile mt-5">
+                        <div className="container-profile">
                             <div className="profile-row row">
                                 <div className="profile-column col">
                                     <div className="container-left-img-profile">
