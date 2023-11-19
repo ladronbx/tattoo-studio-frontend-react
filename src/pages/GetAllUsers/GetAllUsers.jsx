@@ -6,7 +6,7 @@ import { selectToken } from "../userSlice";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { PaginationButton } from "../../common/PaginationButton/PaginationButton";
-import CardAllUsers from "../../common/CardAllUsers/CardAllUsers";
+import { CardUser } from "../../common/CardUSer/CardUser";
 
 export const GetAllUsers = () => {
   const rdxToken = useSelector(selectToken);
@@ -50,24 +50,28 @@ export const GetAllUsers = () => {
 
   return (
 
-    <div className="cards-users-body">
-      <PaginationButton
-        classPagination={"next"}
-        text={"Next"}
-        changePagination={() => changePageUp()}
-      />
-      <PaginationButton
-        classPagination={"previous"}
-        text={"Previous"}
-        changePagination={() => changePageDown()}
-      />
+    <div className="card-user-container-main">
+      <div className="pagination-container">
+        <PaginationButton
+          classPagination="previous-artist"
+          text={"Previous"}
+          changePagination={() => changePageDown()}
+        />
+        <PaginationButton
+          classPagination="next-artist "
+          text={"Next"}
+          changePagination={() => changePageUp()}
+        />
+      </div>
+
 
       {
         users.length > 0
           ? (
-            <div>
+
+            <div className="card-user-container">
               {users.map((user) => (
-                <CardAllUsers
+                <CardUser
                   key={user.id}
                   full_name={user.full_name}
                   photo={user.photo}
