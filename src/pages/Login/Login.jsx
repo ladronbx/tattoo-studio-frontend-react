@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 //Rdx escritura
 import { useDispatch } from "react-redux";
-import { login} from "../userSlice";
+import { login } from "../userSlice";
 
 //Rdx
 import { useSelector } from "react-redux";
@@ -77,27 +77,30 @@ export const Login = () => {
     }
 
     return (
-        <div className="login-style">
-            <CustomInput
-                design={"inputStyle"}
-                type={"email"}
-                name={"email"}
-                placeholder={"Email"}
-                functionProp={functionHandler}
-                functionBlur={errorCheck}
-            />
-            <div className='error-style'>{credentialsError.emailError}</div>
-            <CustomInput
-                design={"inputStyle"}
-                type={"password"}
-                name={"password"}
-                placeholder={"Password"}
-                functionProp={functionHandler}
-                functionBlur={errorCheck}
-            />
-            <div className='error-style'>{credentialsError.passwordError}</div>
+        <div className="login-style-container-main">
+            <div className="login-style-container">
+            <h2 class="title-login">Log In!</h2>
+                <CustomInput
+                    design={"input-style"}
+                    type={"email"}
+                    name={"email"}
+                    placeholder={"Email"}
+                    functionProp={functionHandler}
+                    functionBlur={errorCheck}
+                />
+                <div className='error-style'>{credentialsError.emailError}</div>
+                <CustomInput
+                    design={"input-style"}
+                    type={"password"}
+                    name={"password"}
+                    placeholder={"Password"}
+                    functionProp={functionHandler}
+                    functionBlur={errorCheck}
+                />
+                <div className='error-style'>{credentialsError.passwordError}</div>
 
-            <div className='buttonLogin' onClick={logMe}>Log Me!</div>
+                <div className='buttonLogin' onClick={logMe}>Log Me!</div>
+            </div>
 
         </div>
     )
