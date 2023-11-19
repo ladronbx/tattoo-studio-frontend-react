@@ -31,6 +31,7 @@
 - ### 👩🏽‍💻 [Stack](#stack)
 - ### 🌱 [Componentes](#componentes)
 - ### 👀 [Vistas](#vistas)
+- ### 🔝 [Mejoras](#mejoras)
 - ### ⚙️ [Local Installation Instructions](#local-installation-instructions)
 - ### 📧 [Contact](#contact)
 - ### 🌐 [GitHub Pages Link](#github-pages-link)
@@ -237,7 +238,8 @@ Esta lógica de ternaria garantiza que el estilo del menú y los enlaces cambie 
 
 - **`UpdateProfile`:** Vista que permite a los usuarios actualizar la información de su perfil
 
-
+## Mejoras
+En futuras actualizaciones, se realizarán mejoras significativas en el diseño de la aplicación con el objetivo de mejorar la **estética general**. Se pondrá especial atención en la implementación de un diseño **responsivo** e implementaré la **búsqueda dinámica** que permitirá a los usuarios realizar búsquedas de manera más eficiente y rápida.
 
 # Instrucciones de Instalación Local
 
