@@ -1,69 +1,75 @@
 .card-appointment {
   display: flex;
-  width: 80%;
-  color: rgb(0, 0, 0);
+  flex-direction: column;
+  align-items: center;
+  width: 30em;
+  height: auto;
+  color: rgb(255, 255, 255);
   text-align: center;
-  padding: 1em 0em 1em 0em;
-  border-radius: 0.5em;
-  background-color: #a1acdb;
+  padding: 1em;
+  border-radius: 1em;
+  background-color:  rgb(29, 79, 79);
   margin: 3em;
-  transition: 1s;
+  font-family: 'Cinzel', serif;
+  box-shadow: 0px 0px 1em rgba(188, 17, 17, 0.2);
 }
 
-.card-appointment-right{
+.card-appointment-details {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  flex-direction: row;
-  transition-duration: 2s;
+  width: 100%;
 }
 
 .card-appointment img {
-  border-radius: 10%;
-  width: 20%;
-  margin-top: 1.25em;
+  border-radius: 1em;
+  width: 7.5em;
+  max-width: 20em;
+  margin-right: 1em;
+  box-shadow: 0px 0px 1em rgba(0, 0, 0, 0.2);
 }
 
-.date-category {
-  display: flex;
-  justify-content: space-between;
-  margin-right: 6em;
+.card-appointment-info {
+  flex: 1;
 }
 
-.date {
-  margin-right: 3em;
-}
-
-.service {
-  margin-left: 3em;
-}
-
-.button-spoiler {
-  width: 10em;
-
-}
-
-.tattoo-artist-card-container{
+.visible-card-appointment {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0em;
 }
 
-.button-update-appointment{ 
-  cursor:pointer;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 4em;
+.date-and-shift, .category, .artist_name {
+  margin: 0em;
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-card-appointment, .date-and-shift, .artist_name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.button-spoiler {
   width: 4em;
+  margin-top: 1em;
+  color: rgb(255, 255, 255);
+  background-color: rgb(29, 79, 79);
+  border: none;
+  padding: 0em;
+  cursor: pointer;
+  border-radius: 0.5em;
 }
 
-.button-update-appointment img{ 
-  cursor:pointer;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 4em;
-  width: 4em;
+.tattoo-artist-card-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 1em;
 }
-

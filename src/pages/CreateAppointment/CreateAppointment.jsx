@@ -145,13 +145,13 @@ export const CreateAppointment = () => {
                 {
                     gallery.length > 0 &&
 
-                    <select className="gallery-select" name="name" onChange={functionHandler}>
+                    <select className="gallery-select" name="id" onChange={functionHandler}>
                         <option>Select a service</option>
                         {
                             gallery.map(
                                 service => {
                                     return (
-                                        <option key={service.id} value={service.name}>{service.name}</option>
+                                        <option key={service.id} value={service.id}>{service.name}</option>
                                     )
                                 }
                             )

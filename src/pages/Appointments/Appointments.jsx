@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 import "./Appointments.css";
 import { appointmentsUsers, removeAppointment } from "../../services/apiCalls";
 import { CardAppointment } from "../../common/CardAppointment/CardAppointment";
@@ -66,45 +66,55 @@ export const Appointments = () => {
 
   return (
     <div className="cards-appointment-body">
-      <PaginationButton
-        classPagination={"next"}
-        text={"Next"}
-        changePagination={() => changePageUp()}
-      />
-      <PaginationButton
-        classPagination={"previous"}
-        text={"Previous"}
-        changePagination={() => changePageDown()}
-      />
-      {appointments ? (
-        <div className="cards-appointment-container">
-          <div>
-            <LinkButton
-              classButton={"link-button-style"}
-              path={"/create-appointment"}
-              title={"CreateAppointment"}
-            />
-            {appointments.map((appointment) => (
-              <CardAppointment
-                key={appointment.id}
-                appointmentId={appointment.id}
-                date={appointment.date}
-                category={appointment.category}
-                nameProduct={appointment.name}
-                imageProduct={appointment.image}
-                email={appointment.email}
-                artist_name={appointment.full_name}
-                shift={appointment.shift}
-                price={appointment.price}
-                emit={() => rdxIdAppointment(appointment.id)}
-                remove={() => removeAppointments(appointment.id, rdxToken)}
-              />
-            ))}
-          </div>
+      <div className="pagination-container">
+        <PaginationButton
+          classPagination="previous-artist"
+          text={"Previous"}
+          changePagination={() => changePageDown()}
+        />
+        <div className='create-appointment-button'>
+        <LinkButton
+          classButton={"link-button-style"}
+          path={"/create-appointment"}
+          title={"CreateAppointment"}
+        />
         </div>
-      ) : (
-        <div>Loading...</div>
-      )}
-    </div>
+        <PaginationButton
+          classPagination="next-artist"
+          text={"Next"}
+          changePagination={() => changePageUp()}
+        />
+      </div>
+      {
+        appointments
+
+
+          ? (
+            <div className="cards-appointment-container">
+              <div>
+
+                {appointments.map((appointment) => (
+                  <CardAppointment
+                    key={appointment.id}
+                    appointmentId={appointment.id}
+                    date={appointment.date}
+                    category={appointment.category}
+                    nameProduct={appointment.name}
+                    imageProduct={appointment.image}
+                    email={appointment.email}
+                    artist_name={appointment.full_name}
+                    shift={appointment.shift}
+                    price={appointment.price}
+                    emit={() => rdxIdAppointment(appointment.id)}
+                    remove={() => removeAppointments(appointment.id, rdxToken)}
+                  />
+                ))}
+              </div>
+            </div>
+          ) : (
+            <div>Loading...</div>
+          )
+      }
+    </div >
   );
 };
