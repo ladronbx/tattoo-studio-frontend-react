@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./Register.css";
+import "./Register.css"; // Asegúrate de importar el archivo CSS correcto
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { logUser, registerUser } from "../../services/apiCalls";
 import { useNavigate } from 'react-router-dom';
@@ -7,7 +7,7 @@ import { checker } from "../../services/checker";
 
 //Rdx escritura
 import { useDispatch } from "react-redux";
-import { login} from "../userSlice";
+import { login } from "../userSlice";
 
 //Rdx
 import { useSelector } from "react-redux";
@@ -20,10 +20,9 @@ export const Register = () => {
 
   useEffect(() => {
     if (rdxUserData) {
-        navigate("/");
+      navigate("/");
     }
-}, []);
-
+  }, []);
 
   const [credentials, setCredentials] = useState({
     full_name: "",
@@ -61,9 +60,6 @@ export const Register = () => {
   };
 
   const photoDefault = (photo) => (photo === "" ? undefined : photo);
-  // const messageValidation = (message) => (message === ""? :)
-
-
 
   const SignUp = () => {
     if (
@@ -90,7 +86,7 @@ export const Register = () => {
   };
 
   useEffect(() => {
-    if (message === "User registered successfully") { 
+    if (message === "User registered successfully") {
       logUser(credentials)
         .then((response) => {
           const { message, token } = response.data;
@@ -107,17 +103,16 @@ export const Register = () => {
     }
   }, [message]);
 
-
-
-
   return (
-    <div className="register-body">
-      <div className="input-card">
+    <div className="login-style-container-main"> {/* Aplicar estilo del contenedor principal */}
+      <div className="register-style-container"> {/* Aplicar estilo del contenedor de inputs */}
+        <h2 class="title-login">Sign Up!</h2> {/* Aplicar estilo del título */}
+        {/* Aplicar estilo del input y del mensaje de error para cada campo */}
         <CustomInput
           design={"inputStyle"}
           type={"name"}
           name={"full_name"}
-          placeholder={"name"}
+          placeholder={"Name"}
           functionProp={functionHandler}
           functionBlur={errorCheck}
         />
@@ -127,7 +122,7 @@ export const Register = () => {
           design={"inputStyle"}
           type={"email"}
           name={"email"}
-          placeholder={"email"}
+          placeholder={"Email"}
           functionProp={functionHandler}
           functionBlur={errorCheck}
         />
@@ -137,7 +132,7 @@ export const Register = () => {
           design={"inputStyle"}
           type={"password"}
           name={"password"}
-          placeholder={"password"}
+          placeholder={"Password"}
           functionProp={functionHandler}
           functionBlur={errorCheck}
         />
@@ -147,14 +142,14 @@ export const Register = () => {
           design={"inputStyle"}
           type={"number"}
           name={"phone_number"}
-          placeholder={"phone number"}
+          placeholder={"Phone number"}
           functionProp={functionHandler}
           functionBlur={errorCheck}
         />
         <div className='error-style'>{credentialsError.phone_numberError}</div>
 
         <CustomInput
-          design={"inputDesign"}
+          design={"inputStyle"}
           type={"text"}
           name={"photo"}
           placeholder={"URL photo"}
@@ -163,10 +158,10 @@ export const Register = () => {
         />
         <div className='error-style'>{credentialsError.photoError}</div>
 
-        <div className='button-submit' onClick={SignUp}>Sign up</div>
+        {/* Aplicar estilo al botón de registro */}
+        <div className='buttonLogin' onClick={SignUp}>Sign Up</div>
         <p>{message}</p>
       </div>
     </div>
-
   );
 };
