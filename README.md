@@ -1,14 +1,28 @@
 <div align="center">
-<h1> ## FRONTEND TATTOO & PIERCING STUDIO 🖋️ ##</h1>
-
-**Quinto proyecto del Bootcampt Full Stack Developer en GeeksHubs Academy, Valencia**
-
 <a href="https://geekshubs.com/">
-        <img src="doc/img-readme/geekhubs.png" width="50%"/>
+        <img src="src/assets/readme/geekhubs.png" width="50%"/>
     </a>
 </div>
 
+<h1> ## FRONTEND TATTOO & PIERCING STUDIO 🖋️ ##</h1>
+
+<div align="center">
+<a href="https://geekshubs.com/">
+        <img src="src/assets/readme/img-home.png" width="70%"/>
+    </a>
+</div>
+
+
+**Quinto proyecto del Bootcampt Full Stack Developer en GeeksHubs Academy, Valencia**
+
+
 ---
+<div align="center">
+<a href="https://geekshubs.com/">
+        <img src="src/assets/readme/giphy.gif" width="50%"/>
+    </a>
+</div>
+
 
 # Table of Contents
 
@@ -51,9 +65,20 @@ El frontend ha sido desarrollado utilizando tecnologías como React, Redux,  Jav
 ### Componente Header
 
 El componente `Header` es la barra de navegación superior de la aplicación. Proporciona acceso a diferentes secciones de la aplicación, dependiendo del estado del usuario y su rol. Aquí hay una breve descripción de las características clave del componente:
+<div align="center">
+<a href="https://geekshubs.com/">
+        <img src="src/assets/readme/img-headerç.png" width="70%"/>
+    </a>
+</div>
 
 - **Logo:**
   - Se muestra el logo de la aplicación, que sirve como enlace para volver a la página principal.
+
+<div align="center">
+<a href="https://geekshubs.com/">
+        <img src="src/assets/readme/logo.png" width="20%"/>
+    </a>
+</div>
 
 - **Menú de Navegación:**
   - El menú de navegación incluye enlaces a secciones como "Home", "Artists", "Gallery", "Profile", "Appointments" y "Update Profile". Los enlaces específicos disponibles dependen del estado del usuario (logueado o no) y su rol (superadmin o no).
@@ -87,12 +112,23 @@ El componente `Header` es la barra de navegación superior de la aplicación. Pr
 Esta lógica de ternaria garantiza que el estilo del menú y los enlaces cambie dinámicamente según el estado del menú, lo que mejora la experiencia del usuario al interactuar con la barra de navegación.
 
 
-
-### Descripción Breve de Componentes
+### Componentes
 
 - **`CardAppointment`:** Representa una tarjeta que muestra información sobre una cita, con opciones para editar y eliminar
 
+<div align="center">
+<a href="https://geekshubs.com/">
+        <img src="src/assets/readme/img-card-appointment-1.png" width="40%"/>
+    </a>
+</div>
+
 - **`CardArtist`:** Tarjeta que presenta información sobre un artista, como su nombre y su email
+
+<div align="center">
+<a href="https://geekshubs.com/">
+        <img src="src/assets/readme/giphy.gif" width="30%"/>
+    </a>
+</div>
 
 - **`CardService`:** Tarjeta que muestra detalles sobre un servicio de tatuaje o piercing
 
@@ -117,29 +153,69 @@ Esta lógica de ternaria garantiza que el estilo del menú y los enlaces cambie 
 
 - **`Appointments`:** Vista principal que muestra las citas del usuario logeado
 
+<div align="center">
+<a href="https://geekshubs.com/">
+        <img src="src/assets/readme/img-card-appointment-1.png" width="30%"/>
+    </a>
+</div>
+
+
 - **`Body`:** Vista fantasma que contiene el contenido principal de la aplicación
 
 - **`CreateAppointment`:** Vista que permite a los usuarios crear nuevas citas
 
 - **`Gallery`:** Vista que muestra una galería de imágenes de tatuajes y piercings
 
+<div align="center">
+<div align="center">
+<a href="https://geekshubs.com/">
+        <img src="src/assets/readme/img-galeria.png" width="30%"/>
+    </a>
+</div>
+
 - **`GetAllAppointments`:** Vista que permite a un superadmin obtener una lista de todas las citas existentes en el sistema
 
 - **`GetAllUsers`:** Vista que proporciona a un superadmin una lista de todos los usuarios registrados
 
+<div align="center">
+<div align="center">
+<a href="https://geekshubs.com/">
+        <img src="src/assets/readme/img-getallusers.png" width="30%"/>
+    </a>
+</div>
+
+
 - **`GetArtists`:** Vista que muestra el listado de artistas disponibles
 
 - **`Home`:** Vista principal que sirve como la página de inicio de la aplicación
+<div align="center">
+<a href="https://geekshubs.com/">
+        <img src="src/assets/readme/img-home.png" width="50%"/>
+    </a>
+</div>
 
 - **`Login`:** Vista que permite a los usuarios autenticarse en la aplicación
+
+<div align="center">
+<a href="https://geekshubs.com/">
+        <img src="src/assets/readme/img-login.png" width="40%"/>
+    </a>
+</div>
 
 - **`Profile`:** Vista que muestra información detallada sobre el perfil del usuario
 
 - **`Register`:** Vista que permite a los nuevos usuarios registrarse en la aplicación
 
+<div align="center">
+<a href="https://geekshubs.com/">
+        <img src="src/assets/readme/img-register.png" width="40%"/>
+    </a>
+</div>
+
 - **`UpdateAppointment`:** Vista que permite a los usuarios editar detalles de citas existentes
 
 - **`UpdateProfile`:** Vista que permite a los usuarios actualizar la información de su perfil
+
 
 
 # Instrucciones de Instalación Local
