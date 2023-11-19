@@ -70,7 +70,8 @@ El componente `Header` es la barra de navegación superior de la aplicación. Pr
         <img src="src/assets/readme/img-headerç.png" width="70%"/>
     </a>
 </div>
-
+</br>
+</br>
 - **Logo:**
   - Se muestra el logo de la aplicación, que sirve como enlace para volver a la página principal.
 
@@ -79,6 +80,8 @@ El componente `Header` es la barra de navegación superior de la aplicación. Pr
         <img src="src/assets/readme/logo.png" width="20%"/>
     </a>
 </div>
+</br>
+</br>
 
 - **Menú de Navegación:**
   - El menú de navegación incluye enlaces a secciones como "Home", "Artists", "Gallery", "Profile", "Appointments" y "Update Profile". Los enlaces específicos disponibles dependen del estado del usuario (logueado o no) y su rol (superadmin o no).
@@ -117,18 +120,23 @@ Esta lógica de ternaria garantiza que el estilo del menú y los enlaces cambie 
 - **`CardAppointment`:** Representa una tarjeta que muestra información sobre una cita, con opciones para editar y eliminar
 
 <div align="center">
-<a href="https://geekshubs.com/">
-        <img src="src/assets/readme/img-card-appointment-1.png" width="40%"/>
-    </a>
+  <a href="https://geekshubs.com/">
+        <img src="src/assets/readme/img-card-appointment-1.png" width="50%"/>
+  </a>
 </div>
+</br>
+</br>
 
 - **`CardArtist`:** Tarjeta que presenta información sobre un artista, como su nombre y su email
 
 <div align="center">
-<a href="https://geekshubs.com/">
-        <img src="src/assets/readme/giphy.gif" width="30%"/>
-    </a>
+  <a href="https://geekshubs.com/">
+          <img src="src/assets/readme/giphy.gif" width="50%"/>
+  </a>
 </div>
+</br>
+</br>
+
 
 - **`CardService`:** Tarjeta que muestra detalles sobre un servicio de tatuaje o piercing
 
@@ -155,9 +163,11 @@ Esta lógica de ternaria garantiza que el estilo del menú y los enlaces cambie 
 
 <div align="center">
 <a href="https://geekshubs.com/">
-        <img src="src/assets/readme/img-card-appointment-1.png" width="30%"/>
+        <img src="src/assets/readme/img-card-appointment-1.png" width="50%"/>
     </a>
 </div>
+</br>
+</br>
 
 
 - **`Body`:** Vista fantasma que contiene el contenido principal de la aplicación
@@ -166,23 +176,27 @@ Esta lógica de ternaria garantiza que el estilo del menú y los enlaces cambie 
 
 - **`Gallery`:** Vista que muestra una galería de imágenes de tatuajes y piercings
 
-<div align="center">
+
 <div align="center">
 <a href="https://geekshubs.com/">
-        <img src="src/assets/readme/img-galeria.png" width="30%"/>
+        <img src="src/assets/readme/img-galeria.png" width="50%"/>
     </a>
 </div>
+</br>
+</br>
+
 
 - **`GetAllAppointments`:** Vista que permite a un superadmin obtener una lista de todas las citas existentes en el sistema
 
 - **`GetAllUsers`:** Vista que proporciona a un superadmin una lista de todos los usuarios registrados
 
 <div align="center">
-<div align="center">
 <a href="https://geekshubs.com/">
-        <img src="src/assets/readme/img-getallusers.png" width="30%"/>
+        <img src="src/assets/readme/img-getallusers.png" width="50%"/>
     </a>
 </div>
+</br>
+</br>
 
 
 - **`GetArtists`:** Vista que muestra el listado de artistas disponibles
@@ -193,14 +207,18 @@ Esta lógica de ternaria garantiza que el estilo del menú y los enlaces cambie 
         <img src="src/assets/readme/img-home.png" width="50%"/>
     </a>
 </div>
+</br>
+</br>
 
 - **`Login`:** Vista que permite a los usuarios autenticarse en la aplicación
 
 <div align="center">
 <a href="https://geekshubs.com/">
-        <img src="src/assets/readme/img-login.png" width="40%"/>
+        <img src="src/assets/readme/img-login.png" width="50%"/>
     </a>
 </div>
+</br>
+</br>
 
 - **`Profile`:** Vista que muestra información detallada sobre el perfil del usuario
 
@@ -208,9 +226,12 @@ Esta lógica de ternaria garantiza que el estilo del menú y los enlaces cambie 
 
 <div align="center">
 <a href="https://geekshubs.com/">
-        <img src="src/assets/readme/img-register.png" width="40%"/>
+        <img src="src/assets/readme/img-register.png" width="50%"/>
     </a>
 </div>
+</br>
+</br>
+
 
 - **`UpdateAppointment`:** Vista que permite a los usuarios editar detalles de citas existentes
 
