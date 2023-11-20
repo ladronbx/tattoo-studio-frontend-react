@@ -75,7 +75,6 @@ export const Register = () => {
       };
       registerUser(credentialsWithNumber)
         .then((response) => {
-          console.log(response.data);
           const { message } = response.data;
           setMessage(message);
         })
@@ -92,7 +91,6 @@ export const Register = () => {
           const { message, token } = response.data;
           setMessage(message);
           if (message === "Login successful. Token generated.") {
-            console.log("hola")
             dispatch(login(token));
             navigate("/profile");
           }

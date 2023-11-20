@@ -27,7 +27,6 @@ export const GetAllAppointments = () => {
   useEffect(() => {
     if (rdxToken) {
       const decoded = jwtDecode(rdxToken);
-      console.log(decoded);
       if (decoded.role == "super_admin") {
         const pageString = page.toString()
         getAllAppointments(rdxToken, pageString)
@@ -70,7 +69,6 @@ export const GetAllAppointments = () => {
       })
       .catch(error => console.log(error))
   }
-  console.log(appointments);
 
   return (
 

@@ -17,7 +17,6 @@ export const GetAllUsers = () => {
   useEffect(() => {
     if (rdxToken) {
       const decoded = jwtDecode(rdxToken);
-      console.log(decoded);
       if (decoded.role === "super_admin") {
         const pageString = page.toString()
         getAllUsers(rdxToken, pageString)

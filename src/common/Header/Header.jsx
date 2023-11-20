@@ -17,8 +17,6 @@ export const Header = () => {
         if (rdxToken) {
             try {
                 const decoded = jwtDecode(rdxToken);
-                console.log(decoded);
-                console.log(decoded.role);
                 setDecodedToken(decoded);
             } catch (error) {
                 console.error("Error decoding token:", error);

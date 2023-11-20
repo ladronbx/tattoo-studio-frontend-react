@@ -86,7 +86,6 @@ export const CreateAppointment = () => {
             dataAppointments.id !== "") {
             createAppointment(dataAppointments, rdxToken)
                 .then((response) => {
-                    console.log(response.data);
                     const { message, error } = response.data;
                     setMessage(message);
                     if (!error) {

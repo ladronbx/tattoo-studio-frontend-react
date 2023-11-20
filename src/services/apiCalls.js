@@ -82,7 +82,6 @@ export const getAllAppointments = (rdxToken, page) => {
 };
 
 export const removeAppointment = async (id, token) => {
-  console.log(token);
   return await axios.delete(`${BASE_URL}appointments/delete-my-appointment`, {
     headers: {
       Authorization: `Bearer ${token}`,
