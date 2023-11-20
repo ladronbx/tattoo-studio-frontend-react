@@ -50,13 +50,14 @@ export const Profile = () => {
                                         <div className="email-profile">{user.email}</div>
                                         <div className="phone-name-profile">Phone number</div>
                                         <div className="phone-profile">{user.phone_number}</div>
-                                        <div className="button-update">
+                                        <div className="button-update-profile">
                                             <LinkButton
-                                                className="custom-btn custom-btn-primary"
+                                                className=""
                                                 path={"/update"}
                                                 title={"Update my profile"}
                                             />
                                         </div>
+
                                     </div>
                                 </div>
                             </div>

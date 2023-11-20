@@ -10,13 +10,16 @@
 
 .container-left-img-profile {
   width: 100%;
-  display: flex; /* Añadido para forzar la dirección de la fila */
+  display: flex;
+  /* Añadido para forzar la dirección de la fila */
 }
+
 .container-left-img-profile {
   height: 100%;
   height: 89vh;
 
 }
+
 .container-left-img-profile img {
   height: 100%;
   height: auto;
@@ -59,7 +62,7 @@
   color: black;
 }
 
-.button-update {
+.button-update-profile {
   margin-top: 2em;
   width: 8em;
   font-size: 1.5em;
@@ -70,8 +73,10 @@
   align-items: center;
   background-color: rgb(0, 0, 0);
   transition: background-color 0.3s ease;
+  color: aliceblue;
 }
 
-.button-update:hover {
-  background-color: rgb(19, 51, 66);
+.button-update-profile:hover {
+  background-color: rgb(255, 255, 255);
+  color: black;
 }

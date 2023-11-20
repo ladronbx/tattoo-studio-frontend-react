@@ -105,8 +105,9 @@ export const CreateAppointment = () => {
     };
 
     return (
-        <div className="create-appointment-body">
-            <div className="input-card">
+        <div className="login-style-container-main">
+            <div className="login-style-container">
+            <div className="tittle"> Create appointment</div>
                 <CustomInput
                     design={"inputStyle"}
                     type={"date"}
@@ -159,7 +160,7 @@ export const CreateAppointment = () => {
                     </select>
                 }
 
-                <div className='button-submit' onClick={Create}>Create appointment</div>
+                <div className='button-create' onClick={Create}>Create appointment</div>
                 <p>{message}</p>
             </div>
         </div>

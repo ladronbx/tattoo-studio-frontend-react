@@ -7,12 +7,19 @@
   margin: 0em;
   background-color: rgb(0, 0, 0);
   color: rgb(184, 194, 203);
+
+}
+
+.pagination-container{
+  margin-left: 7em;
+
 }
 
 .col-card-services{
   display: flex;
   justify-content: center;
-  margin-left: 3em;
+  margin-left: 7em;
+  font-size: 1.6em;
 
 }
 

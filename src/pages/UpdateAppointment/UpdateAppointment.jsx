@@ -124,9 +124,9 @@ export const UpdateAppointment = () => {
         }
     };
     return (
-        <div className="appointment-update-body">
-
-            <div className="input-card">
+        <div className="login-style-container-main">
+            <div className="login-style-container">
+            <div className="tittle"> Update appointment</div>
 
                 <CustomInput
                     design={"inputDesign"}
@@ -182,7 +182,7 @@ export const UpdateAppointment = () => {
                     </select>
                 }
               
-                <div className='animated-button' onClick={Update}>Update</div>
+                <div className='button-update' onClick={Update}>Update</div>
 
                 <p>{message}</p>
             </div>
