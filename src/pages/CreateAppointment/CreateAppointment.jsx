@@ -82,8 +82,7 @@ export const CreateAppointment = () => {
         if (
             dataAppointments.date !== "" &&
             dataAppointments.shift !== "" &&
-            dataAppointments.email !== "" &&
-            dataAppointments.id !== "") {
+            dataAppointments.email !== "") {
             createAppointment(dataAppointments, rdxToken)
                 .then((response) => {
                     const { message, error } = response.data;
@@ -145,13 +144,13 @@ export const CreateAppointment = () => {
                 {
                     gallery.length > 0 &&
 
-                    <select className="gallery-select" name="id" onChange={functionHandler}>
+                    <select className="gallery-select" name="name" onChange={functionHandler}>
                         <option>Select a service</option>
                         {
                             gallery.map(
                                 service => {
                                     return (
-                                        <option key={service.id} value={service.id}>{service.name}</option>
+                                        <option key={service.id} value={service.name}>{service.name}</option>
                                     )
                                 }
                             )
