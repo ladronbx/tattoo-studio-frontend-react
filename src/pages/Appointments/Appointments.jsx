@@ -71,7 +71,7 @@ export const Appointments = () => {
         <div className="col">
           <PaginationButton
             classPagination="previous-artist"
-            text={"Previous"}
+            text={"<< Previous"}
             changePagination={() => changePageDown()}
           />
 
@@ -89,7 +89,7 @@ export const Appointments = () => {
 
           <PaginationButton
             classPagination="next-artist "
-            text={"Next"}
+            text={"Next >>"}
             changePagination={() => changePageUp()}
           />
         </div>

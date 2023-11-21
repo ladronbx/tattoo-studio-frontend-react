@@ -44,12 +44,12 @@ export const Gallery = () => {
             <div className="pagination-container">
                 <PaginationButton
                     classPagination="previous-artist"
-                    text={"Previous"}
+                    text={"<< PREVIOUS"}
                     changePagination={() => changePageDown()}
                 />
                 <PaginationButton
                     classPagination="next-artist"
-                    text={"Next"}
+                    text={"NEXT >>"}
                     changePagination={() => changePageUp()}
                 />
             </div>

@@ -16,12 +16,13 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 5em;
+    cursor: pointer;
 }
 
 .card-user-container > * {
     flex: 1 0 calc(30% - 1.25em);
     max-width: calc(30% - 1.25em);
-    margin-bottom: 1.25em; /* Add margin to the bottom of each card */
+    margin-bottom: 1.25em;
 }
 
 .card-user-container > *:nth-child(3n) {
@@ -35,6 +36,6 @@
     }
 
     .card-user-container > *:nth-child(2n) {
-        margin-right: 1.25em; /* Add margin to the right of every second card on smaller screens */
+        margin-right: 1.25em; 
     }
 }

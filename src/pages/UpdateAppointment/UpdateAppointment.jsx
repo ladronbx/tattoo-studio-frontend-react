@@ -111,7 +111,7 @@ export const UpdateAppointment = () => {
                     if (message == "Appointment updated succesfully") {
                         setTimeout(() => {
                             navigate("/appointments");
-                        }, 2500)
+                        }, 3000)
                     }
                 })
                 .catch(error => {
@@ -125,7 +125,7 @@ export const UpdateAppointment = () => {
     return (
         <div className="login-style-container-main">
             <div className="login-style-container">
-            <div className="tittle"> Update appointment</div>
+            <div className="tittle-create-appointment"> Update appointment</div>
 
                 <CustomInput
                     design={"inputDesign"}

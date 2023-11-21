@@ -77,12 +77,12 @@ export const GetAllAppointments = () => {
       <div className="pagination-container">
         <PaginationButton
           classPagination="previous-artist"
-          text={"Previous"}
+          text={"<< Previous"}
           changePagination={() => changePageDown()}
         />
         <PaginationButton
           classPagination="next-artist "
-          text={"Next"}
+          text={"Next >>"}
           changePagination={() => changePageUp()}
         />
       </div>

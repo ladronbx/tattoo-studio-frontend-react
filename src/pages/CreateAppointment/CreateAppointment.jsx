@@ -89,7 +89,7 @@ export const CreateAppointment = () => {
                     setMessage(message);
                     if (!error) {
                         setTimeout(() => {
-                            navigate("/appointments");
+                            navigate("/create-appointment");
                         }, 1500);
                     }
                 })
@@ -105,7 +105,7 @@ export const CreateAppointment = () => {
     return (
         <div className="login-style-container-main">
             <div className="login-style-container">
-            <div className="tittle"> Create appointment</div>
+            <div className="tittle-create-appointment"> Create appointment</div>
                 <CustomInput
                     design={"inputStyle"}
                     type={"date"}
@@ -158,7 +158,7 @@ export const CreateAppointment = () => {
                     </select>
                 }
 
-                <div className='button-create' onClick={Create}>Create appointment</div>
+                <div className='button-create' onClick={Create}>Send</div>
                 <p>{message}</p>
             </div>
         </div>
