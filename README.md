@@ -115,6 +115,14 @@ El componente `Header` es la barra de navegación superior de la aplicación. Pr
 
 Esta lógica de ternaria garantiza que el estilo del menú y los enlaces cambie dinámicamente según el estado del menú, lo que mejora la experiencia del usuario al interactuar con la barra de navegación.
 
+Si el usuario logeado fuese Super Admin se diferenciaría porque se desploquearía la vista "Get all users" y "Get all appointments". Se vería de la siguiente manera : 
+
+<div align="center">
+<a href="https://geekshubs.com/">
+        <img src="src/assets/img/panel-super-admin.png" width="70%"/>
+    </a>
+</div>
+
 
 ### Componentes
 
@@ -266,35 +274,39 @@ En futuras actualizaciones, se realizarán mejoras significativas en el diseño 
     npm install
     
     ```
-    
+
+
+## Backend
+
+Este proyecto depende del backend para su funcionalidad completa. Asegúrate de tener el backend instalado y en ejecución antes de iniciar la aplicación frontend. Puedes encontrar el código fuente del backend en el siguiente repositorio: [Backend Repository](https://github.com/ladronbx/tattoo-studio-backend-express-typeorm.git).
+
+Sigue las instrucciones en el repositorio del backend para clonar y ejecutar el servidor.
 
 ## Ejecutar la Aplicación
 
-1. Una vez instaladas las dependencias, ejecuta la aplicación con el siguiente comando:
+1. Una vez instaladas las dependencias y con el backend en ejecución, inicia la aplicación con el siguiente comando:
     
     ```bash
     npm start
-    
     ```
     
 2. Abre tu navegador y visita http://localhost:3000/ para ver la aplicación en acción.
 
-
 ## Contributions
 
-This project is public, and contributions are welcome. If you'd like to contribute, follow these steps:
+Este proyecto es público, y las contribuciones son bienvenidas. Si deseas contribuir, sigue estos pasos:
 
-1. Fork the repository.
-2. Create a new branch for your contribution.
-3. Make your changes and improvements.
-4. Submit a pull request for review and merging.
+1. Haz un *fork* del repositorio.
+2. Crea una nueva rama para tu contribución.
+3. Realiza tus cambios y mejoras.
+4. Envía una *pull request* para revisión y fusión.
 
 ---
 
-# 📧 Contact
+# 📧 Contacto
 
-If you have any questions, comments, or suggestions, feel free to contact me at [ladronbravovlc@gmail.com](mailto:ladronbravovlc@gmail.com).
+Si tienes preguntas, comentarios o sugerencias, no dudes en ponerte en contacto conmigo en [ladronbravovlc@gmail.com](mailto:ladronbravovlc@gmail.com).
 
-- ***Bienve Ladrón***  
-<a href = "mailto:ladronbravovlc@gmail.com"><img src="https://img.shields.io/badge/Gmail-C6362C?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
-<a href="https://github.com/ladronbx" target="_blank"><img src="https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=green" target="_blank"></a> 
+- ***Bienve Ladrón***
+<a [href="mailto:ladronbravovlc@gmail.com](mailto:href=%22mailto:ladronbravovlc@gmail.com)"><img src="https://img.shields.io/badge/Gmail-C6362C?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
+<a href="https://github.com/ladronbx" target="_blank"><img src="https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=green" target="_blank"></a>

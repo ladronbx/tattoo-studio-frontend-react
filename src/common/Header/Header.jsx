@@ -67,29 +67,41 @@ export const Header = () => {
                         <LinkButton classButton={"link-button-style"} path={"/artists"} title={"Artists"} />
                         <LinkButton classButton={"link-button-style"} path={"/gallery"} title={"Gallery"} />
 
-                        {rdxToken ? (
-                            <>
-                                <LinkButton classButton={"link-button-style"} path={"/profile"} title={"Profile"} />
-                                <LinkButton classButton={"link-button-style"} path={"/appointments"} title={"Appointments"} />
-                                <LinkButton classButton={"link-button-style"} path={"/update"} title={"Update Profile"} />
+                        {
 
-                                {decodedToken && decodedToken.role === "super_admin" && (
+                            rdxToken
+
+                                ? (
                                     <>
-                                        <LinkButton classButton={"link-button-style"} path={"/get-all-users"} title={"Get all Users"} />
-                                        <LinkButton classButton={"link-button-style"} path={"/get-all-appointments"} title={"Get all Appointments"} />
+                                        <LinkButton classButton={"link-button-style"} path={"/profile"} title={"Profile"} />
+                                        <LinkButton classButton={"link-button-style"} path={"/appointments"} title={"Appointments"} />
+                                        <LinkButton classButton={"link-button-style"} path={"/update"} title={"Update Profile"} />
+
+                                        {
+                                            decodedToken && decodedToken.role === "super_admin" &&
+                                            (
+                                                <>
+                                                    <LinkButton classButton={"link-button-style"} path={"/get-all-users"} title={"Get all Users"} />
+                                                    <LinkButton classButton={"link-button-style"} path={"/get-all-appointments"} title={"Get all Appointments"} />
+                                                </>
+                                            )}
+                                        <div onClick={logOutMe}>
+                                            <LinkButton classButton={"link-button-style"} path={"/"} title={"Log Out"} />
+                                        </div>
+
+                                        {decodedToken && decodedToken.role === "super_admin" && (
+                                            <>
+                                                <div className="superadmin-style">SUPER ADMIN</div>
+                                            </>
+                                        )}
+                                    </>
+                                )
+                                : (
+                                    <>
+                                        <LinkButton classButton={"link-button-style"} path={"/login"} title={"Login"} />
+                                        <LinkButton classButton={"link-button-style"} path={"/register"} title={"Register"} />
                                     </>
                                 )}
-
-                                <div onClick={logOutMe}>
-                                    <LinkButton classButton={"link-button-style"} path={"/"} title={"Log Out"} />
-                                </div>
-                            </>
-                        ) : (
-                            <>
-                                <LinkButton classButton={"link-button-style"} path={"/login"} title={"Login"} />
-                                <LinkButton classButton={"link-button-style"} path={"/register"} title={"Register"} />
-                            </>
-                        )}
                     </div>
                 </div>
             </div>

@@ -4,6 +4,7 @@
     align-items: center;
     height: 11vh;
     background-color: rgb(0, 0, 0);
+    width: 100%;
 }
 
 .logo-container-header {
@@ -11,7 +12,7 @@
 }
 
 .navbar-container-header {
-    width: 90%;
+    width: 100%;
 }
 
 .burger-icon {
@@ -26,13 +27,26 @@
 }
 
 .header-style {
-    width: 90%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
     background-color: #000000;
     margin: 0em;
+   
+}
+
+.superadmin-style{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: rgb(29, 79, 79);
+    font-size: 1.9em;
+    margin: 0em;
+    background-color: rgb(0, 0, 0);
+    margin-left: 5em;
+    width: 7em;
 }
 
 .burger-icon {
@@ -41,6 +55,8 @@
 
 .link-buttons {
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .menu-links {
@@ -60,7 +76,11 @@
     text-decoration: none;
     cursor: pointer;
 }
+.link-button-style:hover {
+    color: rgb(29, 79, 79);
+    cursor: pointer;
 
+}
 @media only screen and (max-width: 768px) {
     .navbar-header-style {
         background-color: #000000;
@@ -243,3 +263,4 @@ button {
         font-size: 3em;
     }
 }
+
