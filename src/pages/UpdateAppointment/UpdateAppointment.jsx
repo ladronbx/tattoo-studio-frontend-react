@@ -117,7 +117,7 @@ export const UpdateAppointment = () => {
                 .catch(error => {
                     console.log(error);
                 });
-                } else {
+        } else {
             setMessage("All field are required");
 
         }
@@ -125,7 +125,7 @@ export const UpdateAppointment = () => {
     return (
         <div className="login-style-container-main">
             <div className="login-style-container">
-            <div className="tittle-create-appointment"> Update appointment</div>
+                <div className="tittle-create-appointment"> Update appointment</div>
 
                 <CustomInput
                     design={"inputDesign"}
@@ -136,14 +136,20 @@ export const UpdateAppointment = () => {
                     functionBlur={errorCheck}
                 />
                 <div className='errorMsg'>{appointmentError.dateError}</div>
-
+{/* 
                 <ShiftToggle
                     design={"inputDesign"}
                     selectedShift={appointment.shift}
                     onShiftChange={(value) =>
                         setAppointment((prevState) => ({ ...prevState, shift: value }))
                     }
-                />
+                /> */}
+                 
+                <select name="shift" onChange={functionHandler}>
+                    <option>Select an shift</option>
+                    <option value='morning'>Morning </option>
+                    <option value='afternoon'>Afternoon</option>
+                </select> 
 
                 <div className='errorMsg'>{appointmentError.dateError}</div>
 
@@ -167,7 +173,7 @@ export const UpdateAppointment = () => {
                 {
                     gallery.length > 0 &&
 
-                    <select className = "gallery-select" name="portfolioId" onChange={functionHandler}>
+                    <select className="gallery-select" name="portfolioId" onChange={functionHandler}>
                         <option>Select a service</option>
                         {
                             gallery.map(
@@ -180,7 +186,7 @@ export const UpdateAppointment = () => {
                         }
                     </select>
                 }
-              
+
                 <div className='button-update' onClick={Update}>Update</div>
 
                 <p>{message}</p>
