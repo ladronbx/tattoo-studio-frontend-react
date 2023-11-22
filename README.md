@@ -256,7 +256,8 @@ En futuras actualizaciones, se realizarán mejoras significativas en el diseño 
 1. Clona este repositorio en tu máquina local usando el siguiente comando:
 
 ```jsx
- git clone [URL_del_repositorio]
+ git clone https://github.com/ladronbx/tattoo-studio-frontend-react.git
+
 ```
 
 ## Instalación de Dependencias
