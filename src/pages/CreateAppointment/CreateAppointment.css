@@ -1,4 +1,4 @@
-.login-style-container {
+.create-style-container {
   border: 0.0625em solid #ccc;
   border-radius: 0.5em;
   box-shadow: 0 0 0.625em rgba(0, 0, 0, 0.1);
@@ -8,7 +8,7 @@
   height: 20em;
 }
 
-.login-style-container-main {
+.create-style-container-main {
   height: 89vh;
   width: 100vw;
   display: flex;
@@ -43,9 +43,9 @@
   text-align: center;
   background-color: rgb(29, 79, 79);
   color: white;
-  width: 12.5em;
+  width: 10.5em;
   margin: 1em auto;
-  padding: 0.625em 0.9375em;
+  padding: 0.2em;
   border: none;
   border-radius: 0.1875em;
   cursor: pointer;
@@ -53,5 +53,16 @@
 }
 
 .button-create:hover {
-  background-color: rgb(29, 79, 79);
+  background-color: rgba(29, 79, 79, 0.677);
+  color: rgb(29, 79, 79);
+
+}
+
+select{
+  width: 9em;
+  text-align: center;
+}
+
+.inputStyle{
+  width: 10em;
 }

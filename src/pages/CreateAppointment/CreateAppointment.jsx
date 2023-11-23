@@ -103,9 +103,9 @@ export const CreateAppointment = () => {
     };
 
     return (
-        <div className="login-style-container-main">
-            <div className="login-style-container">
-            <div className="tittle-create-appointment"> Create appointment</div>
+        <div className="create-style-container-main">
+            <div className="create-style-container">
+                <div className="tittle-create-appointment"> Create appointment</div>
                 <CustomInput
                     design={"inputStyle"}
                     type={"date"}
@@ -116,12 +116,19 @@ export const CreateAppointment = () => {
                 />
                 <div className='error-style'>{dataAppointmentsError.dateError}</div>
 
-                <ShiftToggle
+                {/* <ShiftToggle
                     selectedShift={dataAppointments.shift}
                     onShiftChange={(value) =>
                         setdataAppointments((prevState) => ({ ...prevState, shift: value }))
                     }
-                />
+                /> */}
+
+                <select name="shift" onChange={functionHandler}>
+                    <option>Select an shift</option>
+                    <option value='morning'>Morning </option>
+                    <option value='afternoon'>Afternoon</option>
+                </select>
+
                 <div className='error-style'>{dataAppointmentsError.shiftError}</div>
 
                 {
