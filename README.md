@@ -27,7 +27,7 @@
 # Table of Contents
 
 - ### 🚀 [Descripcion](#descripcion)
-- ### 🎯 [Objectivo](#objectivo)
+- ### 🎯 [Objetivo](#objetivo)
 - ### 👩🏽‍💻 [Stack](#stack)
 - ### 🌱 [Componentes](#componentes)
 - ### 👀 [Vistas](#vistas)
