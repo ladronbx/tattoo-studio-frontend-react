@@ -27,14 +27,14 @@
 # Table of Contents
 
 - ### 🚀 [Descripcion](#descripcion)
-- ### 🎯 [Objectivo](#objectivo)
+- ### 🎯 [Objetivo](#objetivo)
 - ### 👩🏽‍💻 [Stack](#stack)
 - ### 🌱 [Componentes](#componentes)
 - ### 👀 [Vistas](#vistas)
 - ### 🔝 [Mejoras](#mejoras)
 - ### ⚙️ [Local Installation Instructions](#local-installation-instructions)
+- ### 🌐 [Contributions](#local-installation-instructions)
 - ### 📧 [Contact](#contact)
-- ### 🌐 [GitHub Pages Link](#github-pages-link)
 
 
 ## Descripción del Proyecto
@@ -304,10 +304,12 @@ Este proyecto es público, y las contribuciones son bienvenidas. Si deseas contr
 
 ---
 
-# 📧 Contacto
+# Contact
+
 
 Si tienes preguntas, comentarios o sugerencias, no dudes en ponerte en contacto conmigo en [ladronbravovlc@gmail.com](mailto:ladronbravovlc@gmail.com).
 
 - ***Bienve Ladrón***
-<a [href="mailto:ladronbravovlc@gmail.com](mailto:href=%22mailto:ladronbravovlc@gmail.com)"><img src="https://img.shields.io/badge/Gmail-C6362C?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
+
+<a href="mailto:ladronbravovlc@gmail.com(mailto:href=%22mailto:ladronbravovlc@gmail.com)"><img src="https://img.shields.io/badge/Gmail-C6362C?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
 <a href="https://github.com/ladronbx" target="_blank"><img src="https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=green" target="_blank"></a>
