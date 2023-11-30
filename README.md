@@ -32,8 +32,8 @@
 - ### 🌱 [Componentes](#componentes)
 - ### 👀 [Vistas](#vistas)
 - ### 🔝 [Mejoras](#mejoras)
-- ### ⚙️ [Local Installation Instructions](#local-installation-instructions)
-- ### 🌐 [Contributions](#local-installation-instructions)
+- ### ⚙️ [Instrucciones de Instalación Local](#instrucciones-de-instalación-local)
+- ### 🌐 [Contributions](#contributions)
 - ### 📧 [Contact](#contact)
 
 
